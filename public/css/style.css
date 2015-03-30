@@ -1,6 +1,9 @@
 * {box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
-body {font:14px/1.42 'Raleway',Arial,Helvetica,sans-serif;text-align:center;color:#444;background:url(../images/restaurant_icons.png) 0 0 repeat;overflow-x:hidden;word-wrap:break-word;text-rendering:optimizeLegibility;}
+body {font:14px/1.42 'Lato', sans-serif;text-align:center;color:#444;background:url(../images/restaurant_icons.png) 0 0 repeat;overflow-x:hidden;word-wrap:break-word;text-rendering:optimizeLegibility;}
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,input,table,caption,tbody,tfoot,thead,tr,th,td,figure{border:0;margin:0;padding:0}
+h1 {
+	font-family: 'Lobster Two', cursive;
+}
 html {overflow-y: scroll;-webkit-text-size-adjust:auto;-webkit-overflow-scrolling: touch;-webkit-tap-highlight-color:#80CBB8;}
 
 img,fieldset,abbr,acronym{border:0;}
@@ -124,7 +127,7 @@ tr:nth-child(2n+1) td{background:#f6f6f6;}
 .pricing.secondary .active 	{border:1px solid #6EC4AE;margin-top:-21px;position:relative;z-index:2;-webkit-box-shadow:0 0 10px rgba(0,0,0,.2);-moz-box-shadow:0 0 10px rgba(0,0,0,.2);box-shadow:0 0 10px rgba(0,0,0,.2);}
 
 /*HEADER*/
-.logo {float:left;display:block;margin:22px 50px 23px 20px;font-size:30px;}
+.logo {float:left;display:block;margin:12px 50px 23px 20px;font-size:30px;}
 
 .main-nav 			{float:left;}
 .main-nav ul 			{position:relative;display:inline-table;z-index:9999;}
@@ -211,7 +214,7 @@ tr:nth-child(2n+1) td{background:#f6f6f6;}
 
 /*HOME*/
 .home .main 	{padding-top:0;}
-.intro 		{position:relative;top:0;left:0;width:100%;height:100vh;margin:0 0 30px;overflow:hidden;}
+.intro 		{position:relative;top:0;left:0;width:100%;height:700px;margin:0 0 30px;overflow:hidden;}
 .bg img		{position:absolute;left:0;bottom:0;}
 .intro .wrap {margin-top:180px;}
 
@@ -532,7 +535,7 @@ dl 			{display:inline-block;width:100%;margin:0 0 22px;}
 fieldset 							{display:inline-block;width:100%;}
 label 							{display:inline-block;cursor: pointer;color:#666;position:relative;}
 input,textarea 						{outline: none;}
-button, input, select, textarea 		{font-family:'Raleway',Arial,Helvetica,sans-serif;margin: 0; vertical-align: baseline; *vertical-align: middle;outline:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none; -webkit-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;-ms-transition:all 0.2s ease-in;transition:all 0.2s ease-in;}
+button, input, select, textarea 		{font-family:'Lato', sans-serif;margin: 0; vertical-align: baseline; *vertical-align: middle;outline:none;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none; -webkit-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;-ms-transition:all 0.2s ease-in;transition:all 0.2s ease-in;}
 button, input[type="button"], input[type="reset"], input[type="submit"] {border:none; cursor: pointer; text-transform:uppercase;-webkit-appearance: button; background:#93D3C3;color:#fff;text-align:center;font-size:13px;font-weight:700;padding:11px 14px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover,
 button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus {background:#fff;color:#93D3C3}

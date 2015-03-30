@@ -1,3 +1,29 @@
+ul.share {
+	list-style-type: none;
+}
+
+ul.share li {
+	padding: 0 5px;
+	float: left;
+}
+
+ul.share li::before {
+	content: "";
+}
+
+ul.share li a i {
+	text-indent: -9999px;
+	transition: background-position .5s linear;
+}
+
+ul.share li a i.facebook:hover {
+	background-position: -750px -330px;
+}
+
+ul.share li a i.gplus:hover {
+	background-position: -590px -480px;
+}
+
 .user-nav .sprite {
     margin-top:11px;
 }
