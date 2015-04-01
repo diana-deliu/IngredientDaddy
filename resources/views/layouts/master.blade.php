@@ -8,7 +8,7 @@
 <meta name="description" content="IngredientDaddy">
 <meta name="author" content="devmotion.ro">
 
-<title>IngredientDaddy</title>
+<title>IngredientDaddy4u</title>
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/animate.css" />
 <link rel="stylesheet" href="css/sprites.css" />
