@@ -1,12 +1,16 @@
-@extends('app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
+<!--main-->
+<main class="main" role="main">
+	<!--wrap-->
+	<div class="wrap clearfix">
+		<!--row-->
+		<div class="row">
+		<!--content-->
+			<section class="content center full-width wow fadeInUp">
+				<div class="modal container">
+					<h3>Register</h3>
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -18,48 +22,39 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+					<form role="form" method="POST" action="{{ url('/auth/register') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
+						<div class="f-row">
+							<input type="text" name="name" value="{{ old('name') }}" placeholder="Name"/>
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
+						<div class="f-row">
+							<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
+						<div class="f-row">
+							<input type="password" name="password" placeholder="Password"/>
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
+						<div class="f-row">
+							<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password"/>
 						</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
+						<div class="f-row bwrap">
+							<input type="submit" value="Register"/>
 						</div>
+						<p> 
+							<a href="{{ url('/auth/login') }}">Already have an account?</a>
+						</p>
 					</form>
 				</div>
-			</div>
+			</section>
+			<!--//content-->
 		</div>
+		<!--//row-->
 	</div>
-</div>
+	<!--//wrap-->
+</main>
+<!--//main-->
 @endsection

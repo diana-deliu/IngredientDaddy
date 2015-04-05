@@ -1,61 +1,60 @@
-@extends('app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+<!--main-->
+	<main class="main" role="main">
+		<!--wrap-->
+		<div class="wrap clearfix">
+			<!--row-->
+			<div class="row">
+			<!--content-->
+				<section class="content center full-width wow fadeInUp">
+					<div class="modal container">
+						<h3>Login</h3>
+						@if (count($errors) > 0)
+							<div class="alert alert-danger">
+								<strong>Whoops!</strong> There were some problems with your input.<br><br>
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
 							</div>
-						</div>
+						@endif
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+						<form role="form" method="POST" action="{{ url('/auth/login') }}">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	
+							<div class="f-row">
+								<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
+	
+							<div class="f-row">
+								<input type="password" name="password" placeholder="Password"/>
 							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
-
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+	
+							<div class="f-row">
+								<input type="checkbox" name="remember"/> 
+								<label>Remember Me</label>
 							</div>
-						</div>
-					</form>
-				</div>
-			</div>
+	
+							<div class="f-row bwrap">
+									<input type="submit" value="Login"/>
+							</div>
+							<p>
+								<a href="{{ url('/password/email') }}">Forgot Your Password?</a>
+							</p>
+							<p>
+								<a href="{{ url('/auth/register') }}">Don't have an account yet?</a>
+							</p>
+						</form>
+					</div>
+			</section>
+			<!--//content-->
 		</div>
+		<!--//row-->
 	</div>
-</div>
+	<!--//wrap-->
+</main>
+<!--//main-->
 @endsection

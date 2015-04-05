@@ -1,31 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<body class="home">
-    <!--header-->
-    <header class="head" role="banner">
-        <!--wrap-->
-        <div class="wrap clearfix">
-            <a href="/" title="IngredientDaddy" class="logo">
-               <img src="images/ingredientdaddy_mascot_nobody60.png" alt="IngredientDaddy logo" />
-            </a>
-            <nav class="main-nav" role="navigation" id="menu">
-                <ul>
-                    <li class="current-menu-item"><a href="/" title="Home"><span>Home</span></a></li>
-                    <li><a href="/contact" title="Contact"><span>Contact</span></a></li>
-                </ul>
-            </nav>
-            <nav class="user-nav" role="navigation">
-                <ul>
-                    <li class="light"><a href="/search" title="Search for recipes"><i class="sprite sprite-ico_search30_white"></i> <span>Search for recipes</span></a></li>
-                    <li class="medium"><a href="/profile" title="My account"><i class="sprite sprite-ico_user30_white"></i> <span>My account</span></a></li>
-                    <li class="dark"><a href="/submit_recipe" title="Submit a recipe"><i class="sprite sprite-ico_recipe30_white"></i> <span>Submit a recipe</span></a></li>
-                </ul>
-            </nav>
-        </div>
-        <!--//wrap-->
-    </header>
-    <!--//header-->
     <!--main-->
     <main class="main" role="main">
         <!--intro-->
@@ -76,7 +51,7 @@
                 <section class="content full-width">
                     <div class="icons dynamic-numbers">
                             <div class="cta">
-                                <a href="/login" class="button big">Join us!</a>
+                                <a href="{{ url('/auth/register') }}" class="button big">Join us!</a>
                             </div>
                         </div>
                         <!--//row-->
