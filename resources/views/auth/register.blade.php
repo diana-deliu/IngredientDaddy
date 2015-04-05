@@ -38,7 +38,7 @@
 						</div>
 
 						<div class="f-row">
-							<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm password"/>
+							<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password"/>
 						</div>
 
 						<div class="f-row bwrap">
