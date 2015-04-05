@@ -41,10 +41,23 @@
                 </ul>
             </nav>
             <nav class="user-nav" role="navigation">
+             @if( Auth::check() )
+             <p class="hello">
+                    	Hi, <strong>{{ Auth::user()->name }}</strong>!
+                    	<a href="{{ url('/auth/logout') }}">LOGOUT</a>
+             </p>
+             @else
+             	<p class="hello">
+                    	<a href="{{ url('/auth/login') }}">LOGIN</a> or <a href="{{ url('/auth/register') }}">REGISTER</a>
+             </p>
+             @endif
+             
                 <ul>
                     <li class="light"><a href="{{ url('/search') }}" title="Search for recipes"><i class="sprite sprite-ico_search30_white"></i> <span>Search for recipes</span></a></li>
-                    <li class="medium"><a href="{{ url('/profile') }}" title="My account"><i class="sprite sprite-ico_user30_white"></i> <span>My account</span></a></li>
-                    <li class="dark"><a href="{{ url('/submit_recipe') }}" title="Submit a recipe"><i class="sprite sprite-ico_recipe30_white"></i> <span>Submit a recipe</span></a></li>
+                   	@if( Auth::check() )
+                    	<li class="medium"><a href="{{ url('/profile') }}" title="Profile"><i class="sprite sprite-ico_user30_white"></i> <span>Profile</span></a></li>
+                    	<li class="dark"><a href="{{ url('/submit_recipe') }}" title="Submit a recipe"><i class="sprite sprite-ico_recipe30_white"></i> <span>Submit a recipe</span></a></li>
+                	@endif
                 </ul>
             </nav>
         </div>
@@ -79,8 +92,6 @@
                         <ul>
                             <li><a href="{{ url('/') }}" title="Home">Home</a></li>
                             <li><a href="{{ url('/contact') }}" title="Contact">Contact</a></li>    
-                            <li><a href="{{ url('/auth/login') }}" title="Login">Login</a></li>   
-                            <li><a href="{{ url('/auth/register') }}" title="Register">Register</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -32,5 +32,10 @@ class HomeController extends Controller {
 	{
 		return view('pages.index');
 	}
+	
+	public function profile() 
+	{
+		return view('pages.profile');
+	}
 
 }

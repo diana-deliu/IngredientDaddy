@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('home', 'HomeController@index');
+Route::get('home', ['uses' => 'HomeController@index', 'as' => 'home']);
+Route::get('profile', ['uses' => 'HomeController@profile', 'as' => 'profile']);
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
