@@ -49,7 +49,7 @@
             <div class="row">
                 <!--content-->
                 <section class="content full-width">
-                    <div class="icons dynamic-numbers">
+                    <div class="dynamic-numbers">
                             <div class="cta">
                                 <a href="{{ url('/auth/register') }}" class="button big">Join us!</a>
                             </div>
