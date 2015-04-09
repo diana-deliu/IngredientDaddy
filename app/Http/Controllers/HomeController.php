@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -35,7 +37,9 @@ class HomeController extends Controller {
 	
 	public function profile() 
 	{
-		return view('pages.profile');
+		$user = Auth::user();
+		
+		return view('pages.profile', compact('user'));
 	}
 
 }
