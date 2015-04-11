@@ -32,7 +32,7 @@ class ContactController extends Controller
         });
 
         return redirect('contact')->with([
-            'flash_message' => 'Your message has been sent successfully!',
+            'flash_message' => 'Your message has been sent!',
             'flash_message_type' => 'alert-success'
         ]);
     }

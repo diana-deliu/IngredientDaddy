@@ -1,5 +1,6 @@
 /vendor
-/node_modules
-/storage/framework/views
+!/vendor/laravel/framework
+/storage/framework/sessions
 /storage/logs
 .env
+/node_modules
