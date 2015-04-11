@@ -13,7 +13,9 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::get('home', ['uses' => 'HomeController@index', 'as' => 'home']);
-Route::get('profile', ['uses' => 'HomeController@profile', 'as' => 'profile']);
+Route::get('profile', ['uses' => 'UsersController@profile', 'as' => 'profile']);
+Route::get('contact', 'ContactController@index');
+Route::post('contact', 'ContactController@contact');
 
 
 Route::controllers([

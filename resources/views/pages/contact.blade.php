@@ -10,7 +10,7 @@
                 <!--content-->
                 <section class="content center full-width wow fadeInUp">
                     <div class="modal container">
-                        <h3>Login</h3>
+                        <h3>Contact us</h3>
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -21,33 +21,24 @@
                                 </ul>
                             </div>
                         @endif
-
-                        <form role="form" method="POST" action="{{ url('/auth/login') }}">
+                        @include('_partials.flash')
+                        <form role="form" method="POST" action="{{ url('/contact') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
                             <div class="f-row">
-                                <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
+                                <input type="text" placeholder="Name" name="name"/>
                             </div>
-
                             <div class="f-row">
-                                <input type="password" name="password" placeholder="Password"/>
+                                <input type="email" placeholder="E-mail" name="email"/>
                             </div>
-
                             <div class="f-row">
-                                <input type="checkbox" name="remember"/>
-                                <label>Remember Me</label>
+                                <input type="number" placeholder="Phone number" name="phone"/>
                             </div>
-
+                            <div class="f-row">
+                                <textarea placeholder="Message" name="message"></textarea>
+                            </div>
                             <div class="f-row bwrap">
-                                <input type="submit" value="Login"/>
+                                <input type="submit" value="Send"/>
                             </div>
-                            <p>
-                                <a href="{{ url('/password/email') }}">Forgot Your Password?</a>
-                            </p>
-
-                            <p>
-                                <a href="{{ url('/auth/register') }}">Don't have an account yet?</a>
-                            </p>
                         </form>
                     </div>
                 </section>

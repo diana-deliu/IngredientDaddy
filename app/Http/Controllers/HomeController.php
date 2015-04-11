@@ -35,11 +35,6 @@ class HomeController extends Controller {
 		return view('pages.index');
 	}
 	
-	public function profile() 
-	{
-		$user = Auth::user();
-		
-		return view('pages.profile', compact('user'));
-	}
+
 
 }

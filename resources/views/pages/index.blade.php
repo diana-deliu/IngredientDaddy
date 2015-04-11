@@ -4,9 +4,10 @@
     <!--main-->
     <main class="main" role="main">
         <!--intro-->
-        <div class="intro"> 
+        <div class="intro">
             <!--wrap-->
             <div class="wrap clearfix">
+                @include('_partials.flash')
                 <!--row-->
                 <div class="row">
                     <article class="three-fourth text wow zoomIn" data-wow-delay=".2s">
