@@ -117,7 +117,7 @@ trait AuthenticatesAndRegistersUsers {
 
 		return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/')
             ->with([
-                'flash_message' => 'You have been successfully logged out!',
+                'flash_message' => 'You have been logged out!',
                 'flash_message_type' => 'alert-info'
             ]);
 	}
