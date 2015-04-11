@@ -1,5 +1,5 @@
-/vendor
 !/vendor/laravel/framework
+/vendor
 /storage/framework/sessions
 /storage/logs
 .env
