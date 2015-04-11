@@ -1,4 +1,4 @@
-!/vendor/laravel/framework
+!/vendor/laravel/framework/*
 /vendor
 /storage/framework/sessions
 /storage/logs
