@@ -344,6 +344,14 @@ class Guard implements GuardContract {
 		return new Response('Invalid credentials.', 401, $headers);
 	}
 
+    public function checkConfirmed(array $credentials = [])
+    {
+        $user = $this->provider->retrieveByCredentials($credentials);
+
+        // First check if the account has been confirmed
+        return $this->isAccountConfirmed($user);
+    }
+
 	/**
 	 * Attempt to authenticate a user using the given credentials.
 	 *
@@ -370,6 +378,11 @@ class Guard implements GuardContract {
 
 		return false;
 	}
+
+    public function isAccountConfirmed($user)
+    {
+        return $user->confirmed;
+    }
 
 	/**
 	 * Determine if the user matches the credentials.

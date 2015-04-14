@@ -17,7 +17,6 @@ Route::get('profile', ['uses' => 'UsersController@profile', 'as' => 'profile']);
 Route::get('contact', 'ContactController@index');
 Route::post('contact', 'ContactController@contact');
 
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

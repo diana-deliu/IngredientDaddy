@@ -9,7 +9,7 @@
 <div>
     Thank you for registering on IngredientDaddy, the best recipe search engine on the web! <br/>
     Please follow the link below to verify your email address:
-    {{ URL::to('register/verify/' . $confirmation_code) }}.<br/>
+    <a href="{{ url('/auth/verify/' . $confirmation_code) }}">{{ url('/auth/verify/' . $confirmation_code) }}</a>.<br/>
 </div>
 
 </body>

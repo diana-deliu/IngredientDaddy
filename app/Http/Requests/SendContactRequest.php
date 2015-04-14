@@ -25,7 +25,6 @@ class SendContactRequest extends Request {
             'name' => 'required|min:2',
             'email' => 'required|email',
             'message' => 'required'
-			//
 		];
 	}
 

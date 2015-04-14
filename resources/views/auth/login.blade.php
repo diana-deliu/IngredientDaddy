@@ -11,6 +11,7 @@
                 <section class="content center full-width wow fadeInUp">
                     <div class="modal container">
                         <h3>Login</h3>
+                        @include('_partials.flash')
                         @include('_partials.flash_error')
                         {!! Form::open() !!}
                             <div class="f-row">
