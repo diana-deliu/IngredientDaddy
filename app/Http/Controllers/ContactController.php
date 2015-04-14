@@ -19,12 +19,7 @@ class ContactController extends Controller
      */
     public function contact(SendContactRequest $request)
     {
-        $text = "From: " . $request->get('name') . "\n";
-        $text .= "E-mail: " . $request->get('email') . "\n";
-        $text .= "Phone number: " . $request->get('phone') . "\n\n";
-        $text .= "Message: " . $request->get('message') . "\n";
-
-        Mail::raw($text, function($message)
+        Mail::send('emails.contact', $request->all(), function($message)
         {
             $message->subject("New mail from IngredientDaddy");
             $message->from('noreply@ingredientdaddy.com', 'IngredientDaddy');
