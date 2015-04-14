@@ -42,7 +42,7 @@
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Register"/>
+							<input type="submit" value="Register" class="button"/>
 						</div>
 						<p> 
 							<a href="{{ url('/auth/login') }}">Already have an account?</a>

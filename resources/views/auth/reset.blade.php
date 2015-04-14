@@ -39,7 +39,7 @@
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Reset Password"/>
+							<input type="submit" value="Reset Password" class="button"/>
 						</div>
 					</form>
 				</div>

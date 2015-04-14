@@ -22,24 +22,22 @@
                             </div>
                         @endif
 
-                        <form role="form" method="POST" action="{{ url('/auth/login') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                        {!! Form::open() !!}
                             <div class="f-row">
-                                <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
+                                {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
                             </div>
 
                             <div class="f-row">
-                                <input type="password" name="password" placeholder="Password"/>
+                                {!! Form::password('password', null, ['placeholder' => 'Password']) !!}
                             </div>
 
                             <div class="f-row">
-                                <input type="checkbox" name="remember"/>
-                                <label>Remember Me</label>
+                                {!! Form::checkbox('remember', null, []) !!}
+                                {!! Form::label('remember', 'Remember me') !!}
                             </div>
 
                             <div class="f-row bwrap">
-                                <input type="submit" value="Login"/>
+                                {!! Form::submit('Login', ['class' => 'button']) !!}
                             </div>
                             <p>
                                 <a href="{{ url('/password/email') }}">Forgot Your Password?</a>
@@ -48,7 +46,9 @@
                             <p>
                                 <a href="{{ url('/auth/register') }}">Don't have an account yet?</a>
                             </p>
-                        </form>
+
+                        {!! Form::close() !!}
+
                     </div>
                 </section>
                 <!--//content-->

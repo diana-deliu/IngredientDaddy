@@ -37,7 +37,7 @@
                                 <textarea placeholder="Message" name="message"></textarea>
                             </div>
                             <div class="f-row bwrap">
-                                <input type="submit" value="Send"/>
+                                <input type="submit" value="Send" class="button"/>
                             </div>
                         </form>
                     </div>

@@ -36,7 +36,7 @@
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Send Password Reset Link">
+							<input type="submit" value="Send Password Reset Link" class="button"/>
 						</div>
 					</form>
 				</div>
