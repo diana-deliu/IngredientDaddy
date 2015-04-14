@@ -28,11 +28,11 @@
                             </div>
 
                             <div class="f-row">
-                                {!! Form::password('password', null, ['placeholder' => 'Password']) !!}
+                                {!! Form::password('password', ['placeholder' => 'Password']) !!}
                             </div>
 
                             <div class="f-row">
-                                {!! Form::checkbox('remember', null, []) !!}
+                                {!! Form::checkbox('remember', null, null, []) !!}
                                 {!! Form::label('remember', 'Remember me') !!}
                             </div>
 

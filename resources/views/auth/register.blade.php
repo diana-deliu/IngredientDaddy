@@ -21,33 +21,30 @@
 							</ul>
 						</div>
 					@endif
-
-					<form role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                    {!! Form::open() !!}
 						<div class="f-row">
-							<input type="text" name="name" value="{{ old('name') }}" placeholder="Name"/>
+                            {!! Form::text('name', old('name'), ['placeholder' => 'Name']) !!}
 						</div>
 
 						<div class="f-row">
-							<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
+                            {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
 						</div>
 
 						<div class="f-row">
-							<input type="password" name="password" placeholder="Password"/>
+                            {!! Form::password('password', ['placeholder' => 'Password']) !!}
 						</div>
 
 						<div class="f-row">
-							<input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password"/>
+                            {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password']) !!}
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Register" class="button"/>
+                            {!! Form::submit('Register', ['class' => 'button']) !!}
 						</div>
 						<p> 
 							<a href="{{ url('/auth/login') }}">Already have an account?</a>
 						</p>
-					</form>
+					{!! Form::close() !!}
 				</div>
 			</section>
 			<!--//content-->

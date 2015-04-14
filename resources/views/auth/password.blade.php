@@ -28,17 +28,15 @@
 						</div>
 					@endif
 
-					<form role="form" method="POST" action="{{ url('/password/email') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+                    {!! Form::open() !!}
 						<div class="f-row">
-							<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
+                            {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Send Password Reset Link" class="button"/>
+                            {!! Form::submit('Send Passowrd Reset Link', ['class' => 'button']) !!}
 						</div>
-					</form>
+					{!! Form::close() !!}
 				</div>
 			</section>
 			<!--//content-->

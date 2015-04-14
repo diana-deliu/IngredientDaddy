@@ -21,27 +21,25 @@
 							</ul>
 						</div>
 					@endif
+                    {!! Form::open() !!}
+                        {!! Form::hidden('token', $token, []) !!}
 
-					<form role="form" method="POST" action="{{ url('/password/reset') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="hidden" name="token" value="{{ $token }}">
-
-						<div class="f-row">
-							<input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail"/>
+                        <div class="f-row">
+                            {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
 						</div>
 
 						<div class="f-row">
-							<input type="password" name="password" placeholder="New Password"/>
+                            {!! Form::password('password', ['placeholder' => 'New Password']) !!}
 						</div>
 
 						<div class="f-row">
-							<input type="password" name="password_confirmation" placeholder="Confirm Password"/>
+                            {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password']) !!}
 						</div>
 
 						<div class="f-row bwrap">
-							<input type="submit" value="Reset Password" class="button"/>
+                            {!! Form::submit('Reset Password', ['class' => 'button']) !!}
 						</div>
-					</form>
+                    {!! Form::close() !!}
 				</div>
 			</section>
 			<!--//content-->
