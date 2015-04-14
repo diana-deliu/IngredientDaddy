@@ -22,24 +22,23 @@
                             </div>
                         @endif
                         @include('_partials.flash')
-                        <form role="form" method="POST" action="{{ url('/contact') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! Form::open() !!}
                             <div class="f-row">
-                                <input type="text" placeholder="Name" name="name"/>
+                                {!! Form::text('name', null, ['placeholder' => 'Name']) !!}
                             </div>
                             <div class="f-row">
-                                <input type="email" placeholder="E-mail" name="email"/>
+                                {!! Form::email('email', null, ['placeholder' => 'E-mail']) !!}
                             </div>
                             <div class="f-row">
-                                <input type="number" placeholder="Phone number" name="phone"/>
+                                {!! Form::input('number', 'phone', null, ['placeholder' => 'Phone number']) !!}
                             </div>
                             <div class="f-row">
-                                <textarea placeholder="Message" name="message"></textarea>
+                                {!! Form::textarea('message', null, ['placeholder' => 'Message']) !!}
                             </div>
                             <div class="f-row bwrap">
-                                <input type="submit" value="Send" class="button"/>
+                                {!! Form::submit('Send', ['class' => 'button']) !!}
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </section>
                 <!--//content-->
