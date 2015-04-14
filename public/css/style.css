@@ -345,6 +345,20 @@ nav li:before, .widget:before, .widget li:before, .boxed li:before {
     display: none;
 }
 
+div.alert ul {
+    margin: 0;
+}
+
+div.alert ul > li {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0;
+}
+
+div.alert ul > li:before {
+    content: '';
+}
+
 hr {
     border: none;
     border-bottom: 1px solid #ddd;

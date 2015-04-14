@@ -11,16 +11,7 @@
 			<section class="content center full-width wow fadeInUp">
 				<div class="modal container">
 					<h3>Password reset</h3>
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+                    @include('_partials.flash_error')
                     {!! Form::open() !!}
                         {!! Form::hidden('token', $token, []) !!}
 

@@ -19,7 +19,12 @@ class ContactController extends Controller
      */
     public function contact(SendContactRequest $request)
     {
-        Mail::send('emails.contact', $request->all(), function($message)
+        Mail::send('emails.contact', [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+            'mail'=> $request->get('message')
+        ], function($message)
         {
             $message->subject("New mail from IngredientDaddy");
             $message->from('noreply@ingredientdaddy.com', 'IngredientDaddy');
