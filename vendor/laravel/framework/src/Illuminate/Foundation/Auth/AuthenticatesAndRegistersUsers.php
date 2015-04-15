@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 trait AuthenticatesAndRegistersUsers
@@ -159,7 +158,7 @@ trait AuthenticatesAndRegistersUsers
         }
 
         if ($this->auth->attempt($credentials, $request->has('remember'))) {
-            return redirect()->intended($this->redirectPath())
+            return redirect()->intended('/home')
                 ->with([
                     'flash_message' => 'You have been logged in!',
                     'flash_message_type' => 'alert-info'
@@ -169,7 +168,8 @@ trait AuthenticatesAndRegistersUsers
         return redirect($this->loginPath())
             ->withInput($request->only('email', 'remember'))
             ->with([
-                'flash_message' => $this->getFailedLoginMessage()
+                'flash_message' => $this->getFailedLoginMessage(),
+                'flash_message_type' => 'alert-danger'
             ]);
     }
 

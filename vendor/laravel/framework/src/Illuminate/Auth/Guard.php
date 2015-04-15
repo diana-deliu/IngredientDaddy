@@ -82,14 +82,13 @@ class Guard implements GuardContract {
 	 */
 	protected $tokenRetrievalAttempted = false;
 
-	/**
-	 * Create a new authentication guard.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\UserProvider  $provider
-	 * @param  \Symfony\Component\HttpFoundation\Session\SessionInterface  $session
-	 * @param  \Symfony\Component\HttpFoundation\Request  $request
-	 * @return void
-	 */
+    /**
+     * Create a new authentication guard.
+     *
+     * @param  \Illuminate\Contracts\Auth\UserProvider $provider
+     * @param  \Symfony\Component\HttpFoundation\Session\SessionInterface $session
+     * @param  \Symfony\Component\HttpFoundation\Request $request
+     */
 	public function __construct(UserProvider $provider,
 								SessionInterface $session,
 								Request $request = null)
@@ -347,6 +346,12 @@ class Guard implements GuardContract {
     public function checkConfirmed(array $credentials = [])
     {
         $user = $this->provider->retrieveByCredentials($credentials);
+
+        if(is_null($user)) {
+            return true; // most probably, the user does not exist
+            // let the next step fail, this one is designed for
+            // checking account confirmation status only
+        }
 
         // First check if the account has been confirmed
         return $this->isAccountConfirmed($user);
