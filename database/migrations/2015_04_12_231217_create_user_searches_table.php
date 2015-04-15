@@ -25,7 +25,7 @@ class CreateUserSearchesTable extends Migration {
             // region (required)
             // ingredients list (required)
             // when?
-            // recipe list (optional)
+            // accessed recipes list (optional)
 			$table->timestamps();
 		});
 	}

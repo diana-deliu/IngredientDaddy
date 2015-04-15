@@ -20,11 +20,15 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
             $table->boolean('confirmed')->default(0); // is the account confirmed via email?
             $table->string('confirmation_code')->nullable(); // the e-mail confirmation code
+            $table->integer('region_id')->unsigned();
             // allergies/restrictions?
-            // region
-            // ingredients list
+            // user searches list
 			$table->rememberToken();
 			$table->timestamps();
+
+            $table->foreign('region_id')
+                ->references('id')
+                ->on('regions');
 		});
 	}
 

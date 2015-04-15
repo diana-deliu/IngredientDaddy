@@ -31,4 +31,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token', 'confirmation_code', 'confirmed'];
 
+    /**
+     * A user belongs to a region.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function region() {
+        return $this->belongsTo('App\Region');
+    }
+
 }

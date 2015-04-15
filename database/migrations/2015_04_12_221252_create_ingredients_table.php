@@ -21,8 +21,7 @@ class CreateIngredientsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
-            $table->string('thumbnail_url'); // do we need it?
-            $table->string('image_url')->nullable(); // do we need it?
+            $table->string('thumbnail_url')->nullable(); // do we need it?
             $table->integer('popularity')->default(0); // how many recipes reference this ingredient?
             // recipes list
             // region list
