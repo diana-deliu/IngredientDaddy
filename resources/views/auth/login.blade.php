@@ -15,11 +15,11 @@
                         @include('_partials.flash_error')
                         {!! Form::open() !!}
                             <div class="f-row">
-                                {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
+                                {!! Form::email('email', old('email'), ['placeholder' => 'E-mail', 'class' => 'mandatory']) !!}
                             </div>
 
                             <div class="f-row">
-                                {!! Form::password('password', ['placeholder' => 'Password']) !!}
+                                {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'mandatory']) !!}
                             </div>
 
                             <div class="f-row">

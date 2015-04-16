@@ -12,5 +12,20 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.styles([
+        'animate.css',
+        'sprites.css',
+        'style.css'
+    ]);
+
+    mix.scripts([
+        'jquery-1.11.1.min.js',
+        'jquery.uniform.min.js',
+        'wow.min.js',
+        'jquery.slicknav.min.js',
+        'scripts.js'
+    ])
+
+    mix.version('public/css/all.css');
+
 });

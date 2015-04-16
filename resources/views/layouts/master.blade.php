@@ -9,9 +9,7 @@
         <meta name="author" content="devmotion.ro">
 
         <title>IngredientDaddy</title>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/animate.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/sprites.css') }}"/>
+        <link rel="stylesheet" href="{{ elixir('css/all.css') }}"/>
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900|Lobster+Two:400,700' rel='stylesheet'
               type='text/css'>
         <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
@@ -139,10 +137,6 @@
     <div class="spinner"></div>
 </div>
 <!--//preloader-->
-<script src="{{ asset('js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ asset('js/jquery.uniform.min.js') }}"></script>
-<script src="{{ asset('js/wow.min.js') }}"></script>
-<script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
-<script src="{{ asset('js/scripts.js') }}"></script>
+<script src="{{ asset('js/all.js') }}"></script>
 </body>
 </html>

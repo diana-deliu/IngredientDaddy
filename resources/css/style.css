@@ -8,7 +8,7 @@ body {
     font: 14px/1.42 'Lato', sans-serif;
     text-align: center;
     color: #444;
-    background: url(../images/restaurant_icons.png) 0 0 repeat;
+    background: url(../../images/restaurant_icons.png) 0 0 repeat;
     overflow-x: hidden;
     word-wrap: break-word;
     text-rendering: optimizeLegibility;
@@ -629,9 +629,6 @@ tr:nth-child(2n+1) td {
     line-height: normal;
     margin: 28px 0 29px;
     padding: 8px 15px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
@@ -905,9 +902,6 @@ tr:nth-child(2n+1) td {
     font-weight: 700;
     padding: 11px 14px;
     min-width: 80px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
     text-transform: uppercase;
 }
 
@@ -2644,9 +2638,6 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
     font-size: 13px;
     font-weight: 700;
     padding: 11px 14px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
 }
 
 button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover,
@@ -2671,19 +2662,22 @@ input[type="search"]::-webkit-search-decoration {
 
 input[type="search"], input[type="email"], input[type="text"], input[type="number"], input[type="password"], textarea {
     width: 100% !important;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     color: #666;
     font-size: 13px;
     font-weight: 400;
     padding: 9px 10px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+}
+
+input.mandatory {
+    border-width: 2px;
 }
 
 textarea {
     resize: none;
     height: 150px;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
 select {
@@ -2922,7 +2916,7 @@ div.checker span {
     *display: inline;
     zoom: 1;
     text-align: center;
-    background: url(../images/ico/form_elements.png) 0 0 no-repeat;
+    background: url(../../public/images/ico/form_elements.png) 0 0 no-repeat;
 }
 
 div.checker span.checked {
@@ -2999,7 +2993,7 @@ div.radio span {
     *display: inline;
     zoom: 1;
     text-align: center;
-    background: url(../images/ico/form_elements.png) 0 -42px no-repeat;
+    background: url(../../public/images/ico/form_elements.png) 0 -42px no-repeat;
 }
 
 div.radio span.checked {

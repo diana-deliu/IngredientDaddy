@@ -14,20 +14,29 @@
                     @include('_partials.flash_error')
                     {!! Form::open() !!}
 						<div class="f-row">
-                            {!! Form::text('name', old('name'), ['placeholder' => 'Name']) !!}
+                            {!! Form::text('name', old('name'), ['placeholder' => 'Name', 'class' => 'mandatory']) !!}
 						</div>
 
 						<div class="f-row">
-                            {!! Form::email('email', old('email'), ['placeholder' => 'E-mail']) !!}
+                            {!! Form::email('email', old('email'), ['placeholder' => 'E-mail', 'class' => 'mandatory']) !!}
 						</div>
 
 						<div class="f-row">
-                            {!! Form::password('password', ['placeholder' => 'Password']) !!}
+                            {!! Form::password('password', ['placeholder' => 'Password', 'class' => 'mandatory']) !!}
 						</div>
 
 						<div class="f-row">
-                            {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password']) !!}
+                            {!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password', 'class' => 'mandatory']) !!}
 						</div>
+
+                        <div class="f-row">
+                            {!! Form::text('country_name', old('country_name'), ['placeholder' => 'Country']) !!}
+                        </div>
+
+                        <div class="f-row">
+                            {!! Form::text('city', old('city'), ['placeholder' => 'City']) !!}
+                        </div>
+
 
 						<div class="f-row bwrap">
                             {!! Form::submit('Register', ['class' => 'button']) !!}

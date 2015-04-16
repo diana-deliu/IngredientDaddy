@@ -15,16 +15,16 @@
                         @include('_partials.flash')
                         {!! Form::model($user) !!}
                             <div class="f-row">
-                                {!! Form::text('name', null, ['placeholder' => 'Name']) !!}
+                                {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'mandatory']) !!}
                             </div>
                             <div class="f-row">
-                                {!! Form::email('email', null, ['placeholder' => 'E-mail']) !!}
+                                {!! Form::email('email', null, ['placeholder' => 'E-mail', 'class' => 'mandatory']) !!}
                             </div>
                             <div class="f-row">
                                 {!! Form::input('number', 'phone', null, ['placeholder' => 'Phone number']) !!}
                             </div>
                             <div class="f-row">
-                                {!! Form::textarea('message', null, ['placeholder' => 'Message']) !!}
+                                {!! Form::textarea('message', null, ['placeholder' => 'Message', 'class' => 'mandatory']) !!}
                             </div>
                             <div class="f-row bwrap">
                                 {!! Form::submit('Send', ['class' => 'button']) !!}
