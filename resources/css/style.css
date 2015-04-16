@@ -2670,7 +2670,7 @@ input[type="search"], input[type="email"], input[type="text"], input[type="numbe
 }
 
 input.mandatory {
-    border-width: 2px;
+    border-width: 3px;
 }
 
 textarea {
