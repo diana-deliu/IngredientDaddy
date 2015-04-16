@@ -33,7 +33,11 @@
                             <dt>E-mail</dt>
                             <dd>{{ $user['email'] }}</dd>
                             <dt>Location</dt>
-                            <dd>{{ $region['country_name'] }}, {{ $region['city'] }}</dd>
+                            <dd>{{ $region['country_name'] }}
+                                @if(!is_null($region['city']))
+                                , {{ $region['city'] }}
+                                @endif
+                            </dd>
                         </dl>
 
 					</div>
