@@ -57,7 +57,7 @@ class Registrar implements RegistrarContract
         return Region::firstOrCreate([
             'country_name' => $result_array->country_name,
             'country_code' => $result_array->country_code,
-            'city' => $result_array->city
+            'city' => (strpos($result_array->city, '(') !== false) ? null : $result_array->city
         ])->id;
 
     }
