@@ -2916,7 +2916,7 @@ div.checker span {
     *display: inline;
     zoom: 1;
     text-align: center;
-    background: url(../../public/images/ico/form_elements.png) 0 0 no-repeat;
+    background: url(../../images/ico/form_elements.png) 0 0 no-repeat;
 }
 
 div.checker span.checked {
@@ -2993,7 +2993,7 @@ div.radio span {
     *display: inline;
     zoom: 1;
     text-align: center;
-    background: url(../../public/images/ico/form_elements.png) 0 -42px no-repeat;
+    background: url(../../images/ico/form_elements.png) 0 -42px no-repeat;
 }
 
 div.radio span.checked {
