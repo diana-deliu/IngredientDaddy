@@ -12,8 +12,9 @@ class UsersController extends Controller {
     public function profile()
     {
         $user = Auth::user();
+        $region = $user->region;
 
-        return view('pages.profile', compact('user'));
+        return view('pages.profile', compact('user', 'region'));
     }
 
 }

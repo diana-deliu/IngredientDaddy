@@ -17,7 +17,7 @@ class CreateRegionsTable extends Migration {
             $table->increments('id');
             $table->string('country_name');
             $table->string('country_code');
-            $table->string('city');
+            $table->string('city')->unique();
             // recipes list
             // ingredients list
             $table->timestamps();

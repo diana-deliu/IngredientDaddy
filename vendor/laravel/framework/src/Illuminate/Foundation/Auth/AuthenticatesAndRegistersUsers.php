@@ -55,7 +55,6 @@ trait AuthenticatesAndRegistersUsers
         $data = $request->all();
         $data['confirmation_code'] = $confirmation_code;
 
-//		$this->auth->login($this->registrar->create($request->all()));
         $this->registrar->create($data);
 
         $this->sendVerifyEmail($confirmation_code, Input::get('email'), Input::get('name'));

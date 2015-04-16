@@ -28,11 +28,13 @@
 				<div class="tab-content" id="about">
 					<div class="row">
 						<dl class="basic two-third">
-							<dt>Name</dt>
-							<dd>{{ $user['name'] }}</dd>
-							<dt>E-mail</dt>
-							<dd>{{ $user['email'] }}</dd>
-						</dl>
+                            <dt>Name</dt>
+                            <dd>{{ $user['name'] }}</dd>
+                            <dt>E-mail</dt>
+                            <dd>{{ $user['email'] }}</dd>
+                            <dt>Location</dt>
+                            <dd>{{ $region['country_name'] }}, {{ $region['city'] }}</dd>
+                        </dl>
 
 					</div>
 				</div>
