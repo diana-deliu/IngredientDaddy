@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Requests\SendContactRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Laracasts\Flash\Flash;
 
@@ -10,7 +11,8 @@ class ContactController extends Controller
 
     public function index()
     {
-        return view('pages.contact');
+        $user = Auth::user();
+        return view('pages.contact', compact('user'));
     }
 
     /**

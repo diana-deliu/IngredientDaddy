@@ -13,7 +13,7 @@
                         <h3>Contact us</h3>
                         @include('_partials.flash_error')
                         @include('_partials.flash')
-                        {!! Form::open() !!}
+                        {!! Form::model($user) !!}
                             <div class="f-row">
                                 {!! Form::text('name', null, ['placeholder' => 'Name']) !!}
                             </div>
