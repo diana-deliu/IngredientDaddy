@@ -10,7 +10,7 @@ class Timezone extends Model {
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function cities() {
-        return $this->hasMany('App\City');
+        return $this->hasMany('App\City', 'timezone', 'timezone');
     }
 
 }
