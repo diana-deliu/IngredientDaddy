@@ -12,18 +12,22 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+
     mix.styles([
         'animate.css',
         'sprites.css',
-        'style.css'
+        'style.css',
+        'select2.css',
     ]);
 
     mix.scripts([
-        'jquery-1.11.1.min.js',
+        'jquery-1.11.2.min.js',
         'jquery.uniform.min.js',
         'wow.min.js',
         'jquery.slicknav.min.js',
-        'scripts.js'
+        'scripts.js',
+        'select2.min.js',
+        'spin.min.js'
     ])
 
     mix.version('public/css/all.css');

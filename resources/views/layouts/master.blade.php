@@ -24,6 +24,9 @@
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <![endif]-->
+        <style type="text/css">
+            @yield('header_styles')
+        </style>
 </head>
 <body class="home">
 <!--header-->
@@ -138,5 +141,6 @@
 </div>
 <!--//preloader-->
 <script src="{{ asset('js/all.js') }}"></script>
+@yield('footer_scripts')
 </body>
 </html>

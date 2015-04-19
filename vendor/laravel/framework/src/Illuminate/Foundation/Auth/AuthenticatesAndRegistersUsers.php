@@ -1,5 +1,6 @@
 <?php namespace Illuminate\Foundation\Auth;
 
+use App\Country;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
@@ -32,7 +33,10 @@ trait AuthenticatesAndRegistersUsers
      */
     public function getRegister()
     {
-        return view('auth.register');
+        $countries = Country::lists('country_name', 'country_code');
+        $countries = ['' => 'Country'] + $countries;
+
+        return view('auth.register', compact('countries'));
     }
 
     /**

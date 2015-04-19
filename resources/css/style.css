@@ -300,25 +300,25 @@ ul > li {
     padding: 0 0 10px 15px;
 }
 
-ul > li:before {
+/*ul > li:before {
     content: "\2022";
     font-size: 30px;
     color: #DBBC94;
     position: absolute;
     top: -10px;
     left: 0;
-}
+}*/
 
 ul ul {
     margin: 10px 0 -10px 2px;
 }
 
-ul ul li:before {
+/*ul ul li:before {
     content: "\00af";
     font-size: 25px;
     top: 0;
     left: -2px;
-}
+}*/
 
 ol {
     margin: 0 0 20px 25px;
@@ -944,7 +944,7 @@ tr:nth-child(2n+1) td {
 
 .button.more:after {
     content: "";
-    background: url(../images/ico/icons.png) -173px -13px no-repeat;
+    background: url(../../images/ico/icons.png) -173px -13px no-repeat;
     width: 10px;
     height: 11px;
     position: absolute;
@@ -953,7 +953,7 @@ tr:nth-child(2n+1) td {
 }
 
 .white.more:after {
-    background: url(../images/ico/icons.png) -185px -13px no-repeat;
+    background: url(../../images/ico/icons.png) -185px -13px no-repeat;
 }
 
 .white.more:hover:after {
@@ -1262,7 +1262,7 @@ blockquote {
 
 blockquote:before {
     content: "";
-    background: url(../images/ico/icons.png) -297px -17px no-repeat;
+    background: url(../../images/ico/icons.png) -297px -17px no-repeat;
     width: 15px;
     height: 14px;
     float: left;
@@ -2066,7 +2066,7 @@ dl {
 }
 
 .recipefinder .search input[type="submit"] {
-    background: url(../images/ico/icons.png) -198px 0 no-repeat !important;
+    background: url(../../images/ico/icons.png) -198px 0 no-repeat !important;
     width: 17px;
     height: 17px;
     position: absolute;
@@ -2091,7 +2091,7 @@ dl {
 
 .recipefinder .dropdown:before {
     content: "";
-    background: url(../images/ico/icons.png) -152px -168px no-repeat;
+    background: url(../../images/ico/icons.png) -152px -168px no-repeat;
     width: 11px;
     height: 10px;
     position: absolute;
@@ -2479,7 +2479,7 @@ dl {
 
 .categories li a:before {
     content: "";
-    background: url(../images/ico/icons.png) -161px -13px no-repeat;
+    background: url(../../images/ico/icons.png) -161px -13px no-repeat;
     width: 10px;
     height: 11px;
     position: absolute;
@@ -2680,7 +2680,7 @@ textarea {
     border-bottom: 1px solid #ddd;
 }
 
-select {
+/*select {
     height: 37px;
     font-size: 13px;
     line-height: 1;
@@ -2690,7 +2690,7 @@ select {
     border-radius: 3px;
     border: 1px solid #ddd;
     color: #666;
-}
+}*/
 
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -2763,11 +2763,11 @@ form .alert {
 }
 
 /* General settings */
-div.selector, div.selector span, div.checker span, div.radio span, div.uploader, div.uploader span.action, div.button, div.button span {
+div.checker span, div.radio span, div.uploader, div.uploader span.action, div.button, div.button span {
     -webkit-font-smoothing: antialiased;
 }
 
-div.selector, div.checker, div.button, div.radio, div.uploader {
+div.checker, div.button, div.radio, div.uploader {
     display: -moz-inline-box;
     display: inline-block;
     *display: inline;
@@ -2775,11 +2775,11 @@ div.selector, div.checker, div.button, div.radio, div.uploader {
     vertical-align: middle;
 }
 
-div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus {
+div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus {
     outline: 0;
 }
 
-div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
+div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
     margin: 0;
     padding: 0;
 }
@@ -2813,6 +2813,7 @@ input[type="search"]:active {
 }
 
 /* Select */
+/*
 div.selector {
     font-size: 13px;
     border: 1px solid #ddd;
@@ -2845,7 +2846,7 @@ div.selector span {
 
 div.selector span:before {
     content: "";
-    background: url(../images/ico/icons.png) -217px -2px no-repeat;
+    background: url(../../images/ico/icons.png) -217px -2px no-repeat;
     width: 13px;
     height: 10px;
     position: absolute;
@@ -2895,6 +2896,7 @@ div.selector.disabled span,
 div.selector.disabled.active span {
     background-position: right -104px;
 }
+*/
 
 /* Checkbox */
 div.checker {
@@ -3322,7 +3324,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .facebook a:before {
-    background: url(../images/ico/icons.png) 0 -34px no-repeat;
+    background: url(../../images/ico/icons.png) 0 -34px no-repeat;
     width: 7px;
     height: 15px;
     top: 9px;
@@ -3330,7 +3332,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .youtube a:before {
-    background: url(../images/ico/icons.png) -30px -33px no-repeat;
+    background: url(../../images/ico/icons.png) -30px -33px no-repeat;
     width: 17px;
     height: 16px;
     top: 8px;
@@ -3338,7 +3340,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .rss a:before {
-    background: url(../images/ico/icons.png) -64px -34px no-repeat;
+    background: url(../../images/ico/icons.png) -64px -34px no-repeat;
     width: 16px;
     height: 16px;
     top: 8px;
@@ -3346,7 +3348,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .gplus a:before {
-    background: url(../images/ico/icons.png) -99px -34px no-repeat;
+    background: url(../../images/ico/icons.png) -99px -34px no-repeat;
     width: 15px;
     height: 15px;
     top: 9px;
@@ -3354,7 +3356,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .linkedin a:before {
-    background: url(../images/ico/icons.png) -132px -35px no-repeat;
+    background: url(../../images/ico/icons.png) -132px -35px no-repeat;
     width: 15px;
     height: 14px;
     top: 9px;
@@ -3362,7 +3364,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .twitter a:before {
-    background: url(../images/ico/icons.png) -164px -34px no-repeat;
+    background: url(../../images/ico/icons.png) -164px -34px no-repeat;
     width: 20px;
     height: 16px;
     top: 8px;
@@ -3370,7 +3372,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .pinterest a:before {
-    background: url(../images/ico/icons.png) -201px -33px no-repeat;
+    background: url(../../images/ico/icons.png) -201px -33px no-repeat;
     width: 13px;
     height: 16px;
     top: 8px;
@@ -3378,7 +3380,7 @@ div.uploader.disabled.active span.action {
 }
 
 .social .vimeo a:before {
-    background: url(../images/ico/icons.png) -234px -34px no-repeat;
+    background: url(../../images/ico/icons.png) -234px -34px no-repeat;
     width: 17px;
     height: 16px;
     top: 8px;
@@ -3431,7 +3433,7 @@ div.uploader.disabled.active span.action {
 .ico {
     display: inline-block;
     overflow: hidden;
-    background-image: url(../images/ico/icons.png);
+    background-image: url(../../images/ico/icons.png);
     background-repeat: no-repeat
 }
 
