@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Ingredient;
 use Auth;
 
 class HomeController extends Controller {
@@ -31,9 +32,9 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.index');
-	}
-	
+        $ingredients = Ingredient::lists('name', 'name');
 
+		return view('pages.index', compact('ingredients'));
+	}
 
 }

@@ -35,6 +35,7 @@
     <div class="wrap clearfix">
         <a href="{{ url('/') }}" title="IngredientDaddy" class="logo">
             <img src="{{ asset('images/ingredientdaddy_mascot_nobody60.png') }}" alt="IngredientDaddy logo"/>
+            <h2 class="logo_text">IngredientDaddy</h2>
         </a>
         <nav class="main-nav" role="navigation" id="menu">
             <ul>

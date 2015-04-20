@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Ingredient;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -28,7 +30,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('pages.index');
+        $ingredients = Ingredient::lists('name', 'name');
+
+        return view('pages.index', compact('ingredients'));
 	}
 
 }

@@ -211,8 +211,7 @@
 
 .select2-container--default .select2-selection--multiple {
     background-color: white;
-    border: 1px solid #aaa;
-    border-radius: 4px;
+    border-bottom: 1px solid #ccc;
     cursor: text;
 }
 
@@ -240,12 +239,11 @@
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #e4e4e4;
-    border: 1px solid #aaa;
-    border-radius: 4px;
+    border: 1px solid #fff;
     cursor: default;
     float: left;
     margin-right: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 0 5px;
 }
 
@@ -276,7 +274,7 @@
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border: solid black 1px;
+    border-bottom: 1px solid #000;
     outline: 0;
 }
 

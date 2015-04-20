@@ -20,7 +20,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
     padding: 0
 }
 
-h1 {
+h1, h2 {
     font-family: 'Lobster Two', cursive;
 }
 
@@ -52,7 +52,7 @@ audio, canvas, video {
     width: 100%;
     position: relative;
     z-index: 2;
-    height: 90px;
+    height: 105px;
 }
 
 .head .hello {
@@ -591,8 +591,14 @@ tr:nth-child(2n+1) td {
 .logo {
     float: left;
     display: block;
-    margin: 12px 50px 23px 20px;
     font-size: 30px;
+    padding: 5px 15px 0 15px;
+    margin: 0 15px 0 0;
+    height: 100%;
+}
+
+.logo img {
+    margin:auto;
 }
 
 .main-nav {
@@ -615,8 +621,8 @@ tr:nth-child(2n+1) td {
 .main-nav li a {
     color: #444;
     float: left;
-    height: 90px;
-    line-height: 90px;
+    height: 105px;
+    line-height: 105px;
     -webkit-transition: color 0.2s ease-in;
     -moz-transition: color 0.2s ease-in;
     -o-transition: color 0.2s ease-in;
@@ -627,7 +633,7 @@ tr:nth-child(2n+1) td {
 .main-nav li a span {
     float: left;
     line-height: normal;
-    margin: 28px 0 29px;
+    margin: 35px 0 29px;
     padding: 8px 15px;
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
@@ -736,7 +742,7 @@ tr:nth-child(2n+1) td {
 .user-nav li {
     float: right;
     width: 90px;
-    height: 90px;
+    height: 105px;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -1006,14 +1012,15 @@ tr:nth-child(2n+1) td {
     text-decoration: none;
 }
 
-.text h1 {
-    font-size: 50px;
+h2.logo_text {
+    font-size: 20px;
     line-height: 1.2;
     font-weight: 300;
     padding: 0 0 62px;
     -webkit-text-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     -moz-text-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     text-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    color: #666;
 }
 
 .text p {
@@ -2229,6 +2236,12 @@ dl {
     box-shadow: 0 0 1px rgba(0, 0, 0, .2);
 }
 
+.main .widget.searchfield {
+    webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+}
+
 .widget h3 {
     font-size: 15px;
     color: #666;
@@ -2259,7 +2272,7 @@ dl {
 }
 
 .widget ul li {
-    border-top: 1px solid #ddd;
+    /*border-top: 1px solid #ddd;*/
     padding: 9px 20px;
 }
 
