@@ -1,9 +1,11 @@
 <?php namespace App\Services;
 
+use App\Country;
 use App\Region;
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use stdClass;
 
 class Registrar implements RegistrarContract
 {
@@ -32,7 +34,7 @@ class Registrar implements RegistrarContract
     public function create(array $data)
     {
         return User::create([
-            'region_id' => $this->createRegion(),
+            'region_id' => $this->createRegion($data),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -40,9 +42,31 @@ class Registrar implements RegistrarContract
         ]);
     }
 
-    public function createRegion()
+    public function createRegion($data)
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
+        if(empty($data['country_code'])) {
+            $result = $this->getRegionFromIp($_SERVER['REMOTE_ADDR']);
+        } else {
+            $result = $this->getRegionFromRequest($data);
+        }
+
+        return Region::firstOrCreate([
+            'country_name' => $result->country_name,
+            'country_code' => $result->country_code,
+            'city' => (strpos($result->city, '(') !== false) ? null : $result->city
+        ])->id;
+    }
+
+    private function getRegionFromRequest($data) {
+        $result = new stdClass();
+        $result->country_code = $data['country_code'];
+        $result->city = $data['city'];
+        $result->country_name = Country::whereCountryCode($data['country_code'])->first()->country_name;
+
+        return $result;
+    }
+
+    private function getRegionFromIp($ip) {
         $url = 'http://api.hostip.info/get_json.php?ip=' . $ip;
 
         $ch = curl_init();
@@ -52,14 +76,7 @@ class Registrar implements RegistrarContract
         $result = curl_exec($ch);
         curl_close($ch);
 
-        $result_array = json_decode($result);
-
-        return Region::firstOrCreate([
-            'country_name' => $result_array->country_name,
-            'country_code' => $result_array->country_code,
-            'city' => (strpos($result_array->city, '(') !== false) ? null : $result_array->city
-        ])->id;
-
+        return json_decode($result);
     }
 
 }

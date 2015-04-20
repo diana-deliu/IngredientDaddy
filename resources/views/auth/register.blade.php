@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="f-row">
-                            {!! Form::select('country_name', $countries, '', ['id' => 'country_select']) !!}
+                            {!! Form::select('country_code', $countries, '', ['id' => 'country_select']) !!}
                             <div id="cities_loader"></div>
                         </div>
 
