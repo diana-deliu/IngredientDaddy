@@ -70,6 +70,13 @@ trait AuthenticatesAndRegistersUsers
             ]);
     }
 
+    /**
+     * Sends verification e-mail with confirmation code.
+     *
+     * @param $confirmation_code
+     * @param $email
+     * @param $name
+     */
     private function sendVerifyEmail($confirmation_code, $email, $name)
     {
         $this->email = $email;
@@ -81,7 +88,12 @@ trait AuthenticatesAndRegistersUsers
         });
     }
 
-
+    /**
+     * Confirms the user account if the confirmation code is correct.
+     *
+     * @param $confirmation_code
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getVerify($confirmation_code)
     {
         if(empty($confirmation_code)) {
@@ -105,6 +117,12 @@ trait AuthenticatesAndRegistersUsers
             ]);
     }
 
+    /**
+     * Resends the verification e-mail.
+     *
+     * @param $email
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getResend($email)
     {
         $user = User::whereEmail($email)->first();
@@ -186,6 +204,11 @@ trait AuthenticatesAndRegistersUsers
         return 'These credentials do not match our records.';
     }
 
+    /**
+     * The unconfirmed account message.
+     *
+     * @return string
+     */
     protected function getUnconfirmedAccountMessage()
     {
         return 'Your account has not been confirmed yet. Please check your email.';

@@ -7,13 +7,12 @@ use App\Http\Controllers\Controller;
 
 class JsonController extends Controller {
 
-    public function countries()
-    {
-        $countries = Country::all(['country_code', 'country_name']);
-
-        return $countries;
-    }
-
+    /**
+     * Get the cities for the country as json.
+     *
+     * @param $country_code
+     * @return array
+     */
     public function cities($country_code)
     {
         $country = Country::whereCountryCode($country_code)->first();

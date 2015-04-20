@@ -13,11 +13,9 @@ class WelcomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+    /**
+     * Accessible to guests.
+     */
 	public function __construct()
 	{
 		$this->middleware('guest');

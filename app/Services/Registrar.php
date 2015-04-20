@@ -1,5 +1,6 @@
 <?php namespace App\Services;
 
+use App\City;
 use App\Country;
 use App\Region;
 use App\User;
@@ -9,6 +10,9 @@ use stdClass;
 
 class Registrar implements RegistrarContract
 {
+
+    // the region is unreliable if it's not submitted by the user
+    private $is_region_unreliable = true;
 
     /**
      * Get a validator for an incoming registration request.
@@ -38,10 +42,17 @@ class Registrar implements RegistrarContract
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'confirmation_code' => $data['confirmation_code']
+            'confirmation_code' => $data['confirmation_code'],
+            'is_region_unreliable' => $this->is_region_unreliable
         ]);
     }
 
+    /**
+     * Builds/gets the region for the new user.
+     *
+     * @param $data
+     * @return region_id
+     */
     public function createRegion($data)
     {
         if(empty($data['country_code'])) {
@@ -51,21 +62,35 @@ class Registrar implements RegistrarContract
         }
 
         return Region::firstOrCreate([
-            'country_name' => $result->country_name,
-            'country_code' => $result->country_code,
-            'city' => (strpos($result->city, '(') !== false) ? null : $result->city
+            'country_id' => $result->country_id,
+            'city_id' => $result->city_id
         ])->id;
     }
 
+    /**
+     * Gets the ids from the database according to the submitted form.
+     *
+     * @param $data
+     * @return country_id>, city_id>
+     */
     private function getRegionFromRequest($data) {
         $result = new stdClass();
-        $result->country_code = $data['country_code'];
-        $result->city = $data['city'];
-        $result->country_name = Country::whereCountryCode($data['country_code'])->first()->country_name;
+        $result->country_id = $this->getCountryId($data['country_code']);
+        $result->city_id = $this->getCityId($data['city']);
+
+        if(!is_null($result->country_id) && !is_null($result->city_id)) {
+            $this->is_region_unreliable = false;
+        }
 
         return $result;
     }
 
+    /**
+     * Queries hostip for location info and returns ids.
+     *
+     * @param $ip
+     * @return country_id>, city_id>
+     */
     private function getRegionFromIp($ip) {
         $url = 'http://api.hostip.info/get_json.php?ip=' . $ip;
 
@@ -73,10 +98,42 @@ class Registrar implements RegistrarContract
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
-        $result = curl_exec($ch);
+        $result_curl = json_decode(curl_exec($ch));
         curl_close($ch);
 
-        return json_decode($result);
+        $result = new stdClass();
+        $result->country_id = $this->getCountryId($result_curl->country_code);
+        if(strpos($result_curl->city, '(') !== false) {
+            $result->city_id = null;
+        } else {
+            $result->city_id = $this->getCityId($result_curl->city);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $country_code
+     * @return country_id
+     */
+    private function getCountryId($country_code) {
+        $country = Country::whereCountryCode($country_code)->first();
+        if(is_null($country)) {
+            return null;
+        }
+        return $country->id;
+    }
+
+    /**
+     * @param $city_name
+     * @return city_id
+     */
+    private function getCityId($city_name) {
+        $city = City::whereCity($city_name)->first();
+        if(is_null($city)) {
+            return null;
+        }
+        return $city->id;
     }
 
 }

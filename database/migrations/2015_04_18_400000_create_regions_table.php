@@ -15,13 +15,23 @@ class CreateRegionsTable extends Migration {
 		Schema::create('regions', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->string('country_name')->unique();
-            $table->string('country_code');
-            $table->string('city')->unique()->nullable();
+            $table->integer('country_id')->unique()->nullable()->unsigned();
+            $table->integer('city_id')->unique()->nullable()->unsigned();
             // recipes list
             // ingredients list
             $table->timestamps();
 		});
+
+        Schema::table('regions', function(Blueprint $table)
+        {
+            $table->foreign('country_id')
+                ->references('id')
+                ->on('countries');
+
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities');
+        });
 	}
 
 	/**

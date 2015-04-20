@@ -5,9 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model {
 
 	protected $fillable = [
-        'country_name',
-        'country_code',
-        'city'
+        'country_id',
+        'city_id',
     ];
 
     /**

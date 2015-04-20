@@ -9,6 +9,11 @@ use Laracasts\Flash\Flash;
 class ContactController extends Controller
 {
 
+    /**
+     * Renders the contact form.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $user = Auth::user();
@@ -16,6 +21,8 @@ class ContactController extends Controller
     }
 
     /**
+     * Sends contact e-mail to admin.
+     *
      * @param SendContactRequest $request
      * @return string
      */
