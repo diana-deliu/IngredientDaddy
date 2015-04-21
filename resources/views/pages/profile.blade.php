@@ -44,14 +44,17 @@
             {!! Breadcrumbs::render('profile') !!}
             <section class="content">
                 <div class="row">
-                    <div class="my_account one-fourth wow fadeInLeft animated"
+                    <div class="one-fourth wow fadeInLeft animated"
                          style="visibility: visible">
-                        <figure>
-                            <img src="{{ asset('images/avatar.png') }}"/>
-                        </figure>
-                        <div class="container">
-                            <h2>{{ $user['name'] }}</h2>
+                        <div class="profile_avatar my_account">
+                            <figure>
+                                <img src="{{ asset('images/avatar.png') }}"/>
+                            </figure>
+                            <div class="container" style="float:none">
+                                <h2>{{ $user['name'] }}</h2>
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="three-fourth wow fadeInRight">
@@ -146,10 +149,10 @@
             $("#city_select").find('option').remove();
         }
         $("a#edithref").click(function () {
-            if(loadedtab) {
+            if (loadedtab) {
                 return;
             }
-            spinnerLeftMargin = $("div#uniform-country_select").siblings().first().width()+40;
+            spinnerLeftMargin = $("div#uniform-country_select").siblings().first().width() + 40;
 
             $("div#cities_loader").css("margin-left", spinnerLeftMargin);
             var spinner = new Spinner(opts).spin(spinnerTarget);
