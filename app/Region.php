@@ -18,4 +18,22 @@ class Region extends Model {
         return $this->hasMany('App\User');
     }
 
+    /**
+     * A region has one country.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function country() {
+        return $this->belongsTo('App\Country');
+    }
+
+    /**
+     * A region has one city.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function city() {
+        return $this->belongsTo('App\City');
+    }
+
 }

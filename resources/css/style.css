@@ -56,8 +56,8 @@ audio, canvas, video {
 }
 
 .head .hello {
-    height: 90px;
-    line-height: 90px;
+    height: 105px;
+    line-height: 105px;
     position: relative;
     float: right;
     padding: 0 10px;
@@ -159,6 +159,7 @@ audio, canvas, video {
 
 .content {
     float: left;
+    width: 100%;
 }
 
 .cwrap {
@@ -593,8 +594,8 @@ tr:nth-child(2n+1) td {
     display: block;
     font-size: 30px;
     padding: 5px 15px 0 15px;
-    margin: 0 15px 0 0;
     height: 100%;
+    border-right: 15px solid #A292D3;
 }
 
 .logo img {
@@ -609,6 +610,8 @@ tr:nth-child(2n+1) td {
     position: relative;
     display: inline-table;
     z-index: 9999;
+    border-left: 15px solid #93d3c3;
+    padding: 0 0 0 15px;
 }
 
 .main-nav li {
@@ -649,7 +652,7 @@ tr:nth-child(2n+1) td {
 
 .main-nav li:hover span,
 .main-nav .current-menu-item span {
-    background: #93D3C3;
+    background: #a292d3;
     color: #fff;
 }
 
@@ -2142,7 +2145,7 @@ dl {
     font-weight: 500;
     border-right: 1px solid #ddd;
     text-transform: uppercase;
-    width: 25%;
+    width: 50%;
     text-align: center;
     position: relative;
 }
@@ -2161,13 +2164,13 @@ dl {
 
 .tabs .active a,
 .tabs a:hover {
-    background: #ff7b74;
+    background: #a292d3;
     color: #fff;
 }
 
 .tabs .active:before {
     display: block;
-    border-color: #ff7b74 transparent transparent;
+    border-color: #a292d3 transparent transparent;
     border-style: solid;
     border-width: 8px 8px 0;
     top: 48px;

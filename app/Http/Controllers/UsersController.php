@@ -1,8 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Country;
 use Auth;
+use Illuminate\Http\Request;
 
-class UsersController extends Controller {
+class UsersController extends Controller
+{
 
     /**
      * Only accessible to authenticated users.
@@ -20,9 +23,24 @@ class UsersController extends Controller {
     public function profile()
     {
         $user = Auth::user();
-        $region = $user->region;
+        $country = $user->region->country;
+        $city = $user->region->city;
 
-        return view('pages.profile', compact('user', 'region'));
+        $countries = Country::lists('country_name', 'country_code');
+        $countries = ['' => 'Country'] + $countries;
+
+        return view('pages.profile', compact('user', 'country', 'city', 'countries'));
     }
+
+    /**
+     * Update the user using the profile edit form.
+     *
+     * @param Request $request
+     */
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+    }
+
 
 }

@@ -1,52 +1,178 @@
-@extends('layouts.master') @section('content')
-<main class="main" role="main">
-<div class="wrap clearfix">
-	{!! Breadcrumbs::render('profile') !!}
-	<section class="content">
-		<div class="row">
-			<div class="my_account one-fourth wow fadeInLeft animated"
-				style="visibility: visible">
-				<figure>
-					<img src="{{ asset('images/avatar.png') }}" />
-				</figure>
-				<div class="container">
-					<h2>{{ $user['name'] }}</h2>
-				</div>
-			</div>
+@extends('layouts.master')
 
-			<div class="three-fourth wow fadeInRight">
-				<nav class="tabs">
-					<ul>
-						<li class="active"><a href="#about" title="About me">About me</a></li>
-						<li><a href="#recipes" title="My recipes">My recipes</a></li>
-						<li><a href="#favorites" title="My favorites">My favorites</a></li>
-						<li><a href="#posts" title="My posts">My posts</a></li>
-					</ul>
-				</nav>
+@section('header_styles')
+    span.select2 {
+    width:100% !important;
+    min-width: 200px;
+    }
+    select#city_select {
+    display: none;
+    }
+    div#cities_loader {
+    position: absolute;
+    margin-top: -17px;
+    }
+    div#uniform-city_select {
+    width: 100% !important;
+    }
+    input {
+    background: none;
+    border: none !important;
+    color: #fff !important;
+    padding: 11px 10px !important;
+    }
+    input:focus {
+    background: #6ec4ae;
+    }
+    #edit dd {
+    padding: 0;
+    }
+    dd.with_select span.select2-selection.select2-selection--single {
+    background: none;
+    border: none !important;
+    color: #fff !important;
+    font-weight: normal !important;
+    }
+    dd.with_select span.select2-selection.select2-selection--single span {
+    color: #fff !important;
+    }
+@stop
 
-				<!--about-->
-				<div class="tab-content" id="about">
-					<div class="row">
-						<dl class="basic two-third">
-                            <dt>Name</dt>
-                            <dd>{{ $user['name'] }}</dd>
-                            <dt>E-mail</dt>
-                            <dd>{{ $user['email'] }}</dd>
-                            <dt>Location</dt>
-                            <dd>{{ $region['country_name'] }}
-                                @if(!is_null($region['city']))
-                                , {{ $region['city'] }}
-                                @endif
-                            </dd>
-                        </dl>
+@section('content')
+    <main class="main" role="main">
+        <div class="wrap clearfix">
+            {!! Breadcrumbs::render('profile') !!}
+            <section class="content">
+                <div class="row">
+                    <div class="my_account one-fourth wow fadeInLeft animated"
+                         style="visibility: visible">
+                        <figure>
+                            <img src="{{ asset('images/avatar.png') }}"/>
+                        </figure>
+                        <div class="container">
+                            <h2>{{ $user['name'] }}</h2>
+                        </div>
+                    </div>
 
-					</div>
-				</div>
-				<!--//about-->
-			</div>
+                    <div class="three-fourth wow fadeInRight">
+                        <nav class="tabs">
+                            <ul>
+                                <li class="active"><a href="#profile" title="Profile">Profile</a></li>
+                                <li><a id="edithref" href="#edit" title="Edit profile">Edit profile</a></li>
+                            </ul>
+                        </nav>
 
-		</div>
-	</section>
-</div>
-</main>
+                        <!--profile-->
+                        <div class="tab-content" id="profile">
+                            <div class="row">
+                                <dl class="basic two-third">
+                                    <dt>Name</dt>
+                                    <dd>{{ $user['name'] }}</dd>
+                                    <dt>E-mail</dt>
+                                    <dd>{{ $user['email'] }}</dd>
+                                    <dt>Country
+                                        @if($user->is_region_unreliable)
+                                            {{ '(unreliable)' }}
+                                        @endif
+                                    </dt>
+                                    <dd>{{ $country['country_name'] }}</dd>
+                                    <dt>City
+                                        @if($user->is_region_unreliable)
+                                            {{ '(unreliable)' }}
+                                        @endif
+                                    </dt>
+                                    <dd>{{ $city['city'] }}</dd>
+
+                                </dl>
+
+                            </div>
+                        </div>
+                        <!--//profile-->
+                        <!--edit-->
+                        <div class="tab-content" id="edit">
+                            <div class="row">
+                                {!! Form::model($user, ['method' => 'PATCH']) !!}
+                                <dl class="basic two-third">
+                                    <dt>Name</dt>
+                                    <dd>{!! Form::text('name', null, []) !!}</dd>
+                                    <dt>E-mail</dt>
+                                    <dd>{!! Form::email('email', null, []) !!}</dd>
+                                    <dt>Country
+                                        @if($user->is_region_unreliable)
+                                            {{ '(unreliable)' }}
+                                        @endif
+                                    </dt>
+                                    <dd class="with_select">{!! Form::select('country_code', $countries, $country['country_code'], ['id' => 'country_select']) !!}
+                                        <div id="cities_loader"></div>
+                                    </dd>
+                                    <dt>City
+                                        @if($user->is_region_unreliable)
+                                            {{ '(unreliable)' }}
+                                        @endif
+                                    </dt>
+                                    <dd class="with_select">{!! Form::select('city', [], '', ['id' => 'city_select']) !!}</dd>
+                                </dl>
+                                <div class="basic one-third">
+                                    <button type="submit" style="width:100%" class="button" id="submit_button">Submit
+                                    </button>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                        <!--//edit-->
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+@stop
+
+@section('footer_scripts')
+    <script>
+        $("a#edithref").click(function () {
+            $("#submit_button").css("height", $("div#profile dl").height() - 8);
+        });
+    </script>
+    <script>
+        var spinnerColor = "#fff";
+        var spinnerLeftMargin = 0;
+    </script>
+    @include('includes.countries_script')
+    <script>
+        var loadedtab = false;
+        if (loaded) {
+            $("#city_select").select2("destroy");
+            $("#city_select").find('option').remove();
+        }
+        $("a#edithref").click(function () {
+            if(loadedtab) {
+                return;
+            }
+            spinnerLeftMargin = $("div#uniform-country_select").siblings().first().width()+40;
+
+            $("div#cities_loader").css("margin-left", spinnerLeftMargin);
+            var spinner = new Spinner(opts).spin(spinnerTarget);
+            $.ajax({
+                url: "{{ url('/cities') }}/" + $("#country_select").val(),
+                type: "GET",
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                    spinner.stop();
+                    $("#city_select").parent().css("display", "block");
+
+                    $("#city_select").select2({
+                        data: data,
+                        placeholder: 'City',
+                        width: '100% !important'
+                    });
+                    $("#city_select").val("{{ $city['city'] }}").trigger("change");
+                    loaded = true;
+                    loadedtab = true;
+                }
+            })
+        });
+
+    </script>
 @stop

@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('header_styles')
+    .select2-search.select2-search--inline {
+    width: 100%;
+    }
+
     #ingredients_select {
     width: 85%;
     }
@@ -97,7 +101,7 @@
             allowClear: true
         });
 
-        var colors = ["D392A2", "44A78E", "92C3D3", "C1677D", "C3D392", "A292D3", "67C1AA", "93D3C3", "D3C392", "92A2D3", "92D3A2"];
+        var colors = ["A292D3", "D392A2", "44A78E", "92C3D3", "C1677D", "C3D392", "67C1AA", "93D3C3", "D3C392", "92A2D3", "92D3A2"];
 
         $("#ingredients_select").change(function() {
             $(".select2-container--default .select2-selection--multiple .select2-selection__choice").css("background-color", function(index) {

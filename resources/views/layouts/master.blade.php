@@ -12,12 +12,12 @@
         <link rel="stylesheet" href="{{ elixir('css/all.css') }}"/>
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900|Lobster+Two:400,700' rel='stylesheet'
               type='text/css'>
-        <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
-        <link rel="icon" type="image/png" sizes="48x48" href="images/android-icon-48x48.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-        <meta name="msapplication-TileImage" content="images/ms-icon-70x70.png">
-        <link rel="shortcut icon" href="images/favicon.ico"/>
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/apple-icon-60x60.png') }}">
+        <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('images/android-icon-48x48.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+        <meta name="msapplication-TileImage" content="{{ asset('images/ms-icon-70x70.png') }}">
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}"/>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
