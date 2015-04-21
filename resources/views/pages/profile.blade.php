@@ -98,8 +98,6 @@
                                 <dl class="basic two-third">
                                     <dt>Name</dt>
                                     <dd>{!! Form::text('name', null, []) !!}</dd>
-                                    <dt>E-mail</dt>
-                                    <dd>{!! Form::email('email', null, []) !!}</dd>
                                     <dt>Country
                                         @if($user->is_region_unreliable)
                                             {{ '(unreliable)' }}
@@ -115,11 +113,23 @@
                                     </dt>
                                     <dd class="with_select">{!! Form::select('city', [], '', ['id' => 'city_select']) !!}</dd>
                                 </dl>
+
                                 <div class="basic one-third">
                                     <button type="submit" style="width:100%" class="button" id="submit_button">Submit
                                     </button>
                                 </div>
                                 {!! Form::close() !!}
+
+                            </div>
+                            <div class="row">
+                                <a href="#" class="one-third">
+                                    <button class="button" style="width:100%">E-mail administration</button>
+                                </a>
+                                <span style="width:6.66%; float:left;"></span>
+
+                                <a href="#" class="one-third">
+                                    <button class="button" style="width:100%">Edit password</button>
+                                </a>
                             </div>
                         </div>
                         <!--//edit-->
@@ -134,7 +144,7 @@
 @section('footer_scripts')
     <script>
         $("a#edithref").click(function () {
-            $("#submit_button").css("height", $("div#profile dl").height() - 8);
+            $("#submit_button").css("height", $("div#profile dl dt").outerHeight(true) * $("div#edit dl dt").size() - parseInt($("div#profile dl dt").css('marginBottom')));
         });
     </script>
     <script>
@@ -146,7 +156,7 @@
         var loadedtab = false;
         if (loaded) {
             $("#city_select").select2("destroy");
-            $("#city_select").find('option').remove();
+            $("#city_select").find("option").remove();
         }
         $("a#edithref").click(function () {
             if (loadedtab) {
@@ -176,6 +186,5 @@
                 }
             })
         });
-
     </script>
 @stop

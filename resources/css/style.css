@@ -894,6 +894,14 @@ tr:nth-child(2n+1) td {
     color: #666;
 }
 
+.tab-content .two-third {
+    padding: 0;
+}
+
+.tab-content .row {
+    margin: 0;
+}
+
 .entry .container {
     width: 100%;
 }
