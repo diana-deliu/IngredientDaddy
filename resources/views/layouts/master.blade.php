@@ -54,7 +54,7 @@
         <nav class="user-nav" role="navigation">
             @if( Auth::check() )
                 <p class="hello">
-                    Hi, <strong>{{ Auth::user()->name }}</strong>!
+                   <img src="">
                 </p>
             @endif
 

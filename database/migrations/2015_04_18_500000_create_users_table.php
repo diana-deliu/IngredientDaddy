@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
             $table->string('confirmation_code')->nullable(); // the e-mail confirmation code
             $table->integer('region_id')->unsigned();
             $table->boolean('is_region_unreliable')->default(1); // is the region pulled just from the ip?
+            $table->string('avatar_url')->default('');
             // allergies/restrictions?
             // user searches list
 			$table->rememberToken();

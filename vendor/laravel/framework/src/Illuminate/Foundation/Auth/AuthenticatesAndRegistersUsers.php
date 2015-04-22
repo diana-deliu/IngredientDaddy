@@ -63,7 +63,11 @@ trait AuthenticatesAndRegistersUsers
 
         $this->sendVerifyEmail($confirmation_code, Input::get('email'), Input::get('name'));
 
-
+        return redirect($this->redirectPath())
+            ->with([
+                'flash_message' => 'Thank you for registering! Please check your e-mail.',
+                'flash_message_type' => 'alert-success'
+            ]);
     }
 
     /**
