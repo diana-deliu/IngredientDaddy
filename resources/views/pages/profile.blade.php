@@ -94,6 +94,8 @@
                         <!--edit-->
                         <div class="tab-content" id="edit">
                             <div class="row">
+                                @include('_partials.flash')
+                                @include('_partials.flash_error')
                                 {!! Form::model($user, ['method' => 'PATCH']) !!}
                                 <dl class="basic two-third">
                                     <dt>Name</dt>

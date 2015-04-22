@@ -1,11 +1,15 @@
 <?php namespace App\Http\Controllers;
 
+use App\City;
 use App\Country;
+use App\Http\Requests\ProfileUpdateRequest;
 use Auth;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+    protected $redirectPath = '/profile#edit';
 
     /**
      * Only accessible to authenticated users.
@@ -35,11 +39,72 @@ class UsersController extends Controller
     /**
      * Update the user using the profile edit form.
      *
-     * @param Request $request
+     * @param ProfileUpdateRequest|Request $request
+     * @return \Illuminate\Http\RedirectResponse|void
      */
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
         $user = Auth::user();
+        $country_id = $this->getCountryId($request->country_code);
+        $city_id = $this->getCityId($request->city);
+        if (is_null($country_id) || is_null($city_id)) {
+            return redirect($this->redirectPath())
+                ->with([
+                    'flash_message' => 'Invalid country or city!',
+                    'flash_message_type' => 'alert-danger'
+                ]);
+        }
+        $user->update([
+            'name' => $request->name,
+            'country_id' => $country_id,
+            'city_id' => $city_id
+        ]);
+
+        return redirect($this->redirectPath())
+            ->with([
+                'flash_message' => 'Profile successfully updated!',
+                'flash_message_type' => 'alert-success'
+            ]);
+    }
+
+    /**
+     * @param $country_code
+     * @return country_id
+     */
+    private function getCountryId($country_code)
+    {
+        $country = Country::whereCountryCode($country_code)->first();
+        if (is_null($country)) {
+            return null;
+        }
+        return $country->id;
+    }
+
+    /**
+     * @param $city_name
+     * @return city_id
+     */
+    private function getCityId($city_name)
+    {
+        $city = City::whereCity($city_name)->first();
+        if (is_null($city)) {
+            return null;
+        }
+        return $city->id;
+    }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        if (property_exists($this, 'redirectPath')) {
+            return $this->redirectPath;
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile#edit';
     }
 
 

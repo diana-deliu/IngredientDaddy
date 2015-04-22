@@ -24,7 +24,9 @@ $(document).ready(function () {
 	});
 
 	var hash = $.trim( window.location.hash );
-	if (hash) $('.tab-nav a[href$="'+hash+'"]').trigger('click');
+	if (hash) {
+        $('.tabs a[href$="'+hash+'"]').trigger('click');
+    }
 	
 	//ALERTS
 	$('.close').on('click', function (e) {
