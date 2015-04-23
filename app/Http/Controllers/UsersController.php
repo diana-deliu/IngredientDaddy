@@ -3,6 +3,7 @@
 use App\City;
 use App\Country;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Region;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -54,10 +55,16 @@ class UsersController extends Controller
                     'flash_message_type' => 'alert-danger'
                 ]);
         }
-        $user->update([
-            'name' => $request->name,
+
+        $region_id = Region::firstOrCreate([
             'country_id' => $country_id,
             'city_id' => $city_id
+        ])->id;
+
+        $user->update([
+            'name' => $request->name,
+            'region_id' => $region_id,
+            'is_region_unreliable' => 0
         ]);
 
         return redirect($this->redirectPath())

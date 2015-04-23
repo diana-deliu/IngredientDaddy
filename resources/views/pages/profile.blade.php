@@ -161,7 +161,7 @@
             $("#city_select").find("option").remove();
         }
         $("a#edithref").click(function () {
-            if (loadedtab) {
+            if (loadedtab || !$("#country_select").val()) {
                 return;
             }
             spinnerLeftMargin = $("div#uniform-country_select").siblings().first().width() + 40;
