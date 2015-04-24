@@ -27,7 +27,8 @@ elixir(function(mix) {
         'jquery.slicknav.min.js',
         'scripts.js',
         'select2.min.js',
-        'spin.min.js'
+        'spin.min.js',
+        'jquery.form.min.js',
     ])
 
     mix.version('public/css/all.css');

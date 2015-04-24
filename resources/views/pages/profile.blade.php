@@ -36,6 +36,29 @@
     dd.with_select span.select2-selection.select2-selection--single span {
     color: #fff !important;
     }
+    #avatar_upload_form input[type="file"] {
+    display: none;
+    }
+    #avatar_submit_wrapper {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    height:50%;
+    margin-top:-25%;
+    }
+    #avatar_submit {
+    position: relative;
+    left: -50%;
+    z-index: 100;
+    display:none;
+    }
+    #avatar img {
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    }
 @stop
 
 @section('content')
@@ -47,9 +70,20 @@
                     <div class="one-fourth wow fadeInLeft animated"
                          style="visibility: visible">
                         <div class="profile_avatar my_account">
-                            <figure>
+
+                            <figure id="avatar">
                                 <img src="{{ asset('images/avatar.png') }}"/>
+                                <div id="avatar_overlay"></div>
+
                             </figure>
+                            {!! Form::open(['action' => 'UsersController@updateAvatar', 'method' => 'POST', 'id' => 'avatar_upload_form', 'files' => true]) !!}
+                            <div id="avatar_submit_wrapper">
+                                <button type="submit" class="button" id="avatar_submit">Upload avatar
+                                </button>
+                            </div>
+
+                            {!! Form::file('avatar', ['id' => 'avatar_file']) !!}
+                            {!! Form::close() !!}
                             <div class="container" style="float:none">
                                 <h2>{{ $user['name'] }}</h2>
                             </div>
@@ -188,5 +222,50 @@
                 }
             })
         });
+
+        $(".my_account").hover(function() {
+            $("#avatar_submit").css("display", "block");
+            $("#avatar img").css("opacity", ".5");
+            $("#avatar img").css("filter", "alpha(opacity=50)");
+        }, function() {
+            $("#avatar_submit").css("display", "none");
+            $("#avatar img").css("opacity", "1");
+            $("#avatar img").css("filter", "alpha(opacity=100)");
+        });
+
+        $("#avatar_submit").click(function(e) {
+            e.preventDefault();
+            $("#avatar_file").click();
+        });
+
+        $("#avatar_file").on("change", function() {
+            $("#avatar_upload_form").submit();
+        });
+
+        $("#avatar_upload_form").submit(function(e) {
+            var postData = $(this).serializeArray();
+            var formURL = $(this).attr("action");
+
+            $.ajax(
+                    {
+                        url : formURL,
+                        type: "POST",
+                        data : postData,
+                        success:function(data)
+                        {
+                            console.log(data);
+                            //data: return data from server
+                        },
+                        error: function(data)
+                        {
+                            console.log(data.responseJSON);
+                            //in the responseJSON you get the form validation back.
+                        }
+                    });
+            e.preventDefault(); //STOP default action
+        });
+
+
+
     </script>
 @stop

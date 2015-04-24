@@ -114,5 +114,9 @@ class UsersController extends Controller
         return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile#edit';
     }
 
+    public function updateAvatar(Request $request) {
+        dd($request->avatar);
+    }
+
 
 }

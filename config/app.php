@@ -151,6 +151,7 @@ return [
          */
         'Illuminate\Html\HtmlServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+        'Codesleeve\LaravelStapler\Providers\L5ServiceProvider'
 
 	],
 
