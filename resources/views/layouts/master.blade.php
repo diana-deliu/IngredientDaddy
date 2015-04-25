@@ -54,15 +54,11 @@
             </ul>
         </nav>
         <nav class="user-nav" role="navigation">
-
             <ul>
-
                 @if( Auth::check() )
                     @if(!is_null(Auth::user()->avatar))
                         <li class="avatar">
-
-                                <img src="{{ Auth::user()->avatar->url('thumb') }}"
-
+                            <img src="{{ Auth::user()->avatar->url('small') }}"
                         </li>
                     @endif
                     <li class="light noicon">
