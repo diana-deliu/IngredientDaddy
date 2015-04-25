@@ -260,7 +260,6 @@
 
         $("#avatar_upload_form").submit(function(e) {
             var postData = new FormData($(this)[0]);
-            console.log(postData);
             var formURL = $(this).attr("action");
 
             $.ajax(
@@ -272,19 +271,23 @@
                         contentType: false,
                         success:function(data)
                         {
-                            receivedAvatar(data['avatar']);
-                            //data: return data from server
+                            receivedAvatar(data);
                         },
                         error: function(data)
                         {
-                            console.log(data.responseJSON);
+                            alert(data['error']);
                         }
                     });
             e.preventDefault(); //STOP default action
         });
 
-        function receivedAvatar(avatar) {
-            $("#avatar img").attr("src", avatar);
+        function receivedAvatar(data) {
+            if(data['error']) {
+                alert(data['error']);
+            }
+            if(data['avatar']) {
+                $("#avatar img").attr("src", data['avatar']);
+            }
         }
 
     </script>

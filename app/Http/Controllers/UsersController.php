@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -115,6 +116,15 @@ class UsersController extends Controller
     }
 
     public function updateAvatar(Request $request) {
+
+        $v = Validator::make($request->all(), [
+            'avatar' => 'image',
+        ]);
+
+        if ($v->fails()) {
+            response()->json(['error' => 'No image received!']);
+        }
+
         $user = Auth::user();
         $user->avatar = $request->file('avatar');
         $user->save();
