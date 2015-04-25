@@ -4,8 +4,8 @@ use App\City;
 use App\Country;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Region;
-use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -115,7 +115,11 @@ class UsersController extends Controller
     }
 
     public function updateAvatar(Request $request) {
-        dd($request->avatar);
+        $user = Auth::user();
+        $user->avatar = $request->file('avatar');
+        $user->save();
+
+        return response()->json(['avatar' => url($user->avatar->url('medium'))]);
     }
 
 

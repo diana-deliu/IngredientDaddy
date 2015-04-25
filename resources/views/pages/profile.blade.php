@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('header_styles')
     span.select2 {
     width:100% !important;
@@ -59,6 +58,13 @@
     -o-transition: opacity .5s ease-in-out;
     transition: opacity .5s ease-in-out;
     }
+    .profile_avatar_wrapper {
+    width: 300px !important;
+    }
+    .profile_avatar img {
+    width: 300px;
+    }
+
 @stop
 
 @section('content')
@@ -67,12 +73,17 @@
             {!! Breadcrumbs::render('profile') !!}
             <section class="content">
                 <div class="row">
-                    <div class="one-fourth wow fadeInLeft animated"
+                    <div class="one-fourth wow fadeInLeft animated profile_avatar_wrapper"
                          style="visibility: visible">
                         <div class="profile_avatar my_account">
 
                             <figure id="avatar">
-                                <img src="{{ asset('images/avatar.png') }}"/>
+                                @if(!is_null($user->avatar->url('medium')))
+                                    <img src="{{ url($user->avatar->url('medium')) }}"/>
+                                @else
+                                    <img src="{{ asset('images/avatar.png') }}"/>
+                                @endif
+
                                 <div id="avatar_overlay"></div>
 
                             </figure>
@@ -179,6 +190,11 @@
 
 @section('footer_scripts')
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $("#avatar_upload_form input[name='_token']").val()
+            }
+        });
         $("a#edithref").click(function () {
             $("#submit_button").css("height", $("div#profile dl dt").outerHeight(true) * $("div#edit dl dt").size() - parseInt($("div#profile dl dt").css('marginBottom')));
         });
@@ -243,29 +259,33 @@
         });
 
         $("#avatar_upload_form").submit(function(e) {
-            var postData = $(this).serializeArray();
+            var postData = new FormData($(this)[0]);
+            console.log(postData);
             var formURL = $(this).attr("action");
 
             $.ajax(
                     {
                         url : formURL,
                         type: "POST",
+                        processData: false,
                         data : postData,
+                        contentType: false,
                         success:function(data)
                         {
-                            console.log(data);
+                            receivedAvatar(data['avatar']);
                             //data: return data from server
                         },
                         error: function(data)
                         {
                             console.log(data.responseJSON);
-                            //in the responseJSON you get the form validation back.
                         }
                     });
             e.preventDefault(); //STOP default action
         });
 
-
+        function receivedAvatar(avatar) {
+            $("#avatar img").attr("src", avatar);
+        }
 
     </script>
 @stop

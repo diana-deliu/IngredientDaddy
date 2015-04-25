@@ -7,6 +7,7 @@
         <meta name="keywords" content="ingredient daddy"/>
         <meta name="description" content="IngredientDaddy">
         <meta name="author" content="devmotion.ro">
+        @yield('head_meta')
 
         <title>IngredientDaddy</title>
         <link rel="stylesheet" href="{{ elixir('css/all.css') }}"/>
@@ -35,6 +36,7 @@
     <div class="wrap clearfix">
         <a href="{{ url('/') }}" title="IngredientDaddy" class="logo">
             <img src="{{ asset('images/ingredientdaddy_mascot_nobody60.png') }}" alt="IngredientDaddy logo"/>
+
             <h2 class="logo_text">IngredientDaddy</h2>
         </a>
         <nav class="main-nav" role="navigation" id="menu">
@@ -52,15 +54,17 @@
             </ul>
         </nav>
         <nav class="user-nav" role="navigation">
-            @if( Auth::check() )
-                <p class="hello">
-                   <img src="">
-                </p>
-            @endif
 
             <ul>
 
                 @if( Auth::check() )
+                    @if(!is_null(Auth::user()->avatar))
+                        <li class="avatar">
+
+                                <img src="{{ Auth::user()->avatar->url('thumb') }}"
+
+                        </li>
+                    @endif
                     <li class="light noicon">
                         <a href="{{ url('/auth/logout') }}" title="Logout">
                             <span>Logout</span>

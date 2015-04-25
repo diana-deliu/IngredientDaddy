@@ -16,7 +16,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $this->hasAttachedFile('avatar', [
             'styles' => [
                 'medium' => '300x300',
-                'thumb' => '100x100'
+                'thumb' => '105x105'
             ]
         ]);
 

@@ -5860,6 +5860,10 @@ tr:nth-child(2n+1) td {
     transform: translateY(-50%);
 }
 
+.user-nav li.avatar {
+    width: 105px;
+}
+
 .user-nav li:hover a,
 .user-nav .current-menu-item a {
     background: #FFF;
