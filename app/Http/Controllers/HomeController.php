@@ -32,7 +32,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-        $ingredients = Ingredient::lists('name', 'name');
+        $ingredients = Ingredient::lists('name', 'id');
 
 		return view('pages.index', compact('ingredients'));
 	}

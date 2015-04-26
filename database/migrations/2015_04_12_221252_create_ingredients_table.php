@@ -29,10 +29,10 @@ class CreateIngredientsTable extends Migration {
 
         Schema::create('ingredient_recipe', function(Blueprint $table)
         {
-            $table->integer('ingredient_id')->unsigned()->index()->unique();
+            $table->integer('ingredient_id')->unsigned()->index();
             $table->foreign('ingredient_id')->references('id')->on('ingredients');
 
-            $table->integer('recipe_id')->unsigned()->index()->unique();
+            $table->integer('recipe_id')->unsigned()->index();
             $table->foreign('recipe_id')->references('id')->on('recipes');
 
             $table->timestamps();
