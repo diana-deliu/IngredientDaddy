@@ -118,11 +118,11 @@ class UsersController extends Controller
     public function updateAvatar(Request $request) {
 
         $v = Validator::make($request->all(), [
-            'avatar' => 'image',
+            'avatar' => 'required|image',
         ]);
 
         if ($v->fails()) {
-            response()->json(['error' => 'No image received!']);
+            return response()->json(['error' => 'No image received!']);
         }
 
         $user = Auth::user();

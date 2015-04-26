@@ -56,7 +56,7 @@
         <nav class="user-nav" role="navigation">
             <ul>
                 @if( Auth::check() )
-                    @if(!is_null(Auth::user()->avatar))
+                    @if(strpos(Auth::user()->avatar->url(), 'missing') === FALSE)
                         <li class="avatar">
                             <img src="{{ Auth::user()->avatar->url('small') }}"
                         </li>

@@ -23,10 +23,20 @@ class CreateIngredientsTable extends Migration {
             $table->string('name');
             $table->string('thumbnail_url')->nullable(); // do we need it?
             $table->integer('popularity')->default(0); // how many recipes reference this ingredient?
-            // recipes list
             // region list
 			$table->timestamps();
 		});
+
+        Schema::create('ingredient_recipe', function(Blueprint $table)
+        {
+            $table->integer('ingredient_id')->unsigned()->index()->unique();
+            $table->foreign('ingredient_id')->references('id')->on('ingredients');
+
+            $table->integer('recipe_id')->unsigned()->index()->unique();
+            $table->foreign('recipe_id')->references('id')->on('recipes');
+
+            $table->timestamps();
+        });
 	}
 
 	/**
@@ -36,7 +46,8 @@ class CreateIngredientsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('ingredients');
+        Schema::drop('ingredient_recipe');
+        Schema::drop('ingredients');
 	}
 
 }

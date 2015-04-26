@@ -78,7 +78,7 @@
                         <div class="profile_avatar my_account">
 
                             <figure id="avatar">
-                                @if(!is_null($user->avatar->url('medium')))
+                                @if(strpos(Auth::user()->avatar->url(), 'missing') === FALSE)
                                     <img src="{{ url($user->avatar->url('medium')) }}"/>
                                 @else
                                     <img src="{{ asset('images/avatar.png') }}"/>

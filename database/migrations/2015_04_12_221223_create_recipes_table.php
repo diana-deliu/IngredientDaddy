@@ -31,7 +31,6 @@ class CreateRecipesTable extends Migration {
             $table->integer('hits')->default(0); // number of url clicks
             // calories, energy, healthy etc? maybe calculate from ingredient quantities? or fetch from website?
             // region
-            // ingredients list
 			$table->timestamps();
 		});
 	}
