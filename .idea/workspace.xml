@@ -4,7 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/resources/views/emails/contact.blade.php" line="9" mnemonic="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0bbe7c48-2773-4e65-b0d3-efb87049ef88" name="Default" comment="">
+    <list default="true" id="0bbe7c48-2773-4e65-b0d3-efb87049ef88" name="Default" comment="Added noty&#10;Updated animate">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ingredientdaddy.iws" />
@@ -30,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="WelcomeController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WelcomeController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.666666" vertical-offset="225" max-vertical-offset="1125">
-              <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.5499182" vertical-offset="514" max-vertical-offset="1125">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,13 +71,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75083613" vertical-offset="2676" max-vertical-offset="3300">
-              <caret line="125" column="10" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
+            <state vertical-scroll-proportion="-14.966666" vertical-offset="5401" max-vertical-offset="6025">
+              <caret line="234" column="10" selection-start-line="234" selection-start-column="10" selection-end-line="234" selection-end-column="10" />
               <folding>
-                <marker date="1434018237963" expanded="true" signature="3935:3949" placeholder="..." />
+                <element signature="e#2155#2187#0#HTML" expanded="true" />
+                <marker date="1434018411855" expanded="true" signature="7636:7650" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -178,9 +180,9 @@
         <option value="$PROJECT_DIR$/database/migrations/2015_04_12_221252_create_ingredients_table.php" />
         <option value="$PROJECT_DIR$/resources/css/style.css" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/resources/views/pages/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php" />
       </list>
     </option>
   </component>
@@ -799,7 +801,13 @@
       <option name="project" value="LOCAL" />
       <updated>1434018297535</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added noty&#10;Updated animate">
+      <created>1434018396419</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1434018396419</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1224,14 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.666666" vertical-offset="225" max-vertical-offset="1125">
-          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/jquery.noty.packaged.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="865">
@@ -1258,11 +1258,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75083613" vertical-offset="2676" max-vertical-offset="3300">
-          <caret line="125" column="10" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
+        <state vertical-scroll-proportion="-14.966666" vertical-offset="5401" max-vertical-offset="6025">
+          <caret line="234" column="10" selection-start-line="234" selection-start-column="10" selection-end-line="234" selection-end-column="10" />
           <folding>
-            <marker date="1434018237963" expanded="true" signature="3935:3949" placeholder="..." />
+            <element signature="e#2155#2187#0#HTML" expanded="true" />
+            <marker date="1434018411855" expanded="true" signature="7636:7650" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WelcomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5499182" vertical-offset="514" max-vertical-offset="1125">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
