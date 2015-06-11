@@ -31,8 +31,9 @@ class WelcomeController extends Controller {
 	public function index()
 	{
         $ingredients = Ingredient::lists('name', 'name');
+        $warning = true;
 
-        return view('pages.index', compact('ingredients'));
+        return view('pages.index', compact('ingredients', 'warning'));
 	}
 
 }

@@ -111,4 +111,17 @@
             $("#ingredients_search").css("height",  $(".select2-selection.select2-selection--multiple").height() + 1);
         });
     </script>
+
+    @if(isset($warning))
+    <script>
+        var n = noty({
+            text: '<strong>Warning!</strong> <br /> <span style="font-size:18px">This app is still in development.</span> <br/> You have reached this page because you provided URL authentication (perhaps from a CV or some other source). <br/> Please DO NOT share the credentials. <br/> Feel free to play around (you may register with any e-mail address). <br/> Click this message to dismiss it.',
+            animation: {
+                open: 'animated bounceInLeft', // Animate.css class names
+                close: 'animated bounceOutLeft' // Animate.css class names
+            },
+            type: 'warning'
+        });
+    </script>
+    @endif
 @stop

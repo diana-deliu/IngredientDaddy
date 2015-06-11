@@ -29,6 +29,7 @@ elixir(function(mix) {
         'select2.min.js',
         'spin.min.js',
         'jquery.form.min.js',
+        'jquery.noty.packaged.min.js'
     ])
 
     mix.version('public/css/all.css');
