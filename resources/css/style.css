@@ -304,7 +304,7 @@ ul > li {
 /*ul > li:before {
     content: "\2022";
     font-size: 30px;
-    color: #DBBC94;
+    color: #a292d3;
     position: absolute;
     top: -10px;
     left: 0;
@@ -950,7 +950,7 @@ tr:nth-child(2n+1) td {
 }
 
 .gold {
-    background: #DBBC94 !important;
+    background: #a292d3 !important;
     font-size: 14px;
     font-weight: 600;
     padding: 7px 10px;
@@ -1219,7 +1219,7 @@ h2.large {
     left: 0;
     z-index: 10;
     text-align: center;
-    background: rgba(255, 142, 136, 0.85);
+    background: rgba(147, 211, 195, 0.85);
     width: 100%;
     height: 100%;
     -webkit-transition: all 0.2s ease-in;
@@ -1920,7 +1920,7 @@ dl {
 
 .user dd {
     width: 50%;
-    background: #DBBC94;
+    background: #a292d3;
 }
 
 .user dd a {
@@ -2447,7 +2447,7 @@ dl {
 }
 
 .gold .light a {
-    background: #DBBC94;
+    background: #a292d3;
 }
 
 .gold .medium a {
@@ -3971,11 +3971,11 @@ div.uploader.disabled.active span.action {
         position: absolute;
         z-index: 99999;
         top: 0;
-        right: 270px;
+        right: 180px;
     }
 
     .slicknav_open {
-        background: #dbbc94;
+        background: #a292d3;
     }
 
     .slicknav_open .slicknav_icon-bar {
@@ -3988,7 +3988,7 @@ div.uploader.disabled.active span.action {
     }
 
     .slicknav_icon-bar {
-        background: #dbbc94;
+        background: #a292d3;
         margin: 0 0 6px;
         display: block;
         width: 40px;
@@ -4008,7 +4008,7 @@ div.uploader.disabled.active span.action {
         top: 90px;
         left: 0;
         width: 100%;
-        background: #dbbc94;
+        background: #a292d3;
         clear: both;
         font-weight: 600;
         font-size: 15px;

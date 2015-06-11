@@ -18,6 +18,7 @@ Route::patch('profile', 'UsersController@update');
 Route::post('profile/avatar', 'UsersController@updateAvatar');
 Route::get('contact', 'ContactController@index');
 Route::post('contact', 'ContactController@contact');
+Route::get('search', 'SearchController@search');
 
 Route::get('countries', 'JsonController@countries');
 Route::get('cities/{country_code}', 'JsonController@cities');
