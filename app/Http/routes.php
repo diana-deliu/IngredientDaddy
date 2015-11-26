@@ -27,3 +27,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('admin', function() {
+	return view('admin_template');
+});
