@@ -1,13 +1,14 @@
-<?php namespace Codesleeve\LaravelStapler;
+<?php
+
+namespace Codesleeve\LaravelStapler;
 
 use Config;
 use Illuminate\Support\ServiceProvider;
 use Codesleeve\LaravelStapler\Services\ImageRefreshService;
 use Codesleeve\Stapler\Stapler;
-use Codesleeve\Stapler\Config\IlluminateConfig;
 
-class LaravelStaplerServiceProvider extends ServiceProvider {
-
+class LaravelStaplerServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -17,8 +18,6 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap the application events.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -28,8 +27,6 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -39,6 +36,9 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
 
         // services
         $this->registerImageRefreshService();
+
+        // msc
+        $this->registerMigrationFolderPath();
 
         $this->commands('stapler.fasten');
         $this->commands('stapler.refresh');
@@ -51,7 +51,7 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -60,8 +60,6 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
      * - Set the config driver.
      * - Set public_path config using laravel's public_path() method (if necessary).
      * - Set base_path config using laravel's base_path() method (if necessary).
-     * 
-     * @return void
      */
     protected function bootstrapStapler()
     {
@@ -81,26 +79,22 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
 
     /**
      * Register the stapler fasten command with the container.
-     *
-     * @return void
      */
     protected function registerStaplerFastenCommand()
     {
-        $this->app->bind('stapler.fasten', function($app)
-        {
-            return new Commands\FastenCommand($app['view'], $app['files']);
+        $this->app->bind('stapler.fasten', function ($app) {
+            $migrationsFolderPath = app_path().'/database/migrations';
+
+            return new Commands\FastenCommand($app['view'], $app['files'], $migrationsFolderPath);
         });
     }
 
     /**
      * Register the stapler refresh command with the container.
-     *
-     * @return void
      */
     protected function registerStaplerRefreshCommand()
     {
-        $this->app->bind('stapler.refresh', function($app)
-        {
+        $this->app->bind('stapler.refresh', function ($app) {
             $refreshService = $app['ImageRefreshService'];
 
             return new Commands\RefreshCommand($refreshService);
@@ -109,14 +103,19 @@ class LaravelStaplerServiceProvider extends ServiceProvider {
 
     /**
      * Register the image refresh service with the container.
-     * 
-     * @return void 
      */
     protected function registerImageRefreshService()
     {
-        $this->app->singleton('ImageRefreshService', function($app, $params) {
+        $this->app->singleton('ImageRefreshService', function ($app, $params) {
             return new ImageRefreshService($app);
         });
     }
 
+    /**
+     * Register the the migrations folder path with the container.
+     */
+    protected function registerMigrationFolderPath()
+    {
+        $this->app->bind('migration_folder_path', app_path().'/database/migrations');
+    }
 }

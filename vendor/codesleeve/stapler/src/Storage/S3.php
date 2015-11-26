@@ -1,4 +1,6 @@
-<?php namespace Codesleeve\Stapler\Storage;
+<?php
+
+namespace Codesleeve\Stapler\Storage;
 
 use Aws\S3\S3Client;
 use Codesleeve\Stapler\Attachment;
@@ -27,12 +29,12 @@ class S3 implements StorageableInterface
     protected $bucketExists = false;
 
     /**
-     * Constructor method
+     * Constructor method.
      *
      * @param Attachment $attachedFile
-     * @param S3Client $s3Client
+     * @param S3Client   $s3Client
      */
-    function __construct(Attachment $attachedFile, S3Client $s3Client)
+    public function __construct(Attachment $attachedFile, S3Client $s3Client)
     {
         $this->attachedFile = $attachedFile;
         $this->s3Client = $s3Client;
@@ -41,7 +43,8 @@ class S3 implements StorageableInterface
     /**
      * Return the url for a file upload.
      *
-     * @param  string $styleName
+     * @param string $styleName
+     *
      * @return string
      */
     public function url($styleName)
@@ -52,7 +55,8 @@ class S3 implements StorageableInterface
     /**
      * Return the key the uploaded file object is stored under within a bucket.
      *
-     * @param  string $styleName
+     * @param string $styleName
+     *
      * @return string
      */
     public function path($styleName)
@@ -63,7 +67,7 @@ class S3 implements StorageableInterface
     /**
      * Remove an attached file.
      *
-     * @param  array $filePaths
+     * @param array $filePaths
      */
     public function remove(array $filePaths)
     {
@@ -75,17 +79,19 @@ class S3 implements StorageableInterface
     /**
      * Move an uploaded file to it's intended destination.
      *
-     * @param  string $file
-     * @param  string $filePath
+     * @param string $file
+     * @param string $filePath
      */
     public function move($file, $filePath)
     {
         $objectConfig = $this->attachedFile->s3_object_config;
         $fileSpecificConfig = ['Key' => $filePath, 'SourceFile' => $file, 'ContentType' => $this->attachedFile->contentType()];
         $mergedConfig = array_merge($objectConfig, $fileSpecificConfig);
-        
+
         $this->ensureBucketExists($mergedConfig['Bucket']);
         $this->s3Client->putObject($mergedConfig);
+
+        @unlink($file);
     }
 
     /**
@@ -93,6 +99,7 @@ class S3 implements StorageableInterface
      * There will be one path for each of the attachmetn's styles.
      *
      * @param  $filePaths
+     *
      * @return array
      */
     protected function getKeys($filePaths)
@@ -109,7 +116,7 @@ class S3 implements StorageableInterface
     /**
      * Ensure that a given S3 bucket exists.
      *
-     * @param  string $bucketName
+     * @param string $bucketName
      */
     protected function ensureBucketExists($bucketName)
     {
@@ -121,7 +128,7 @@ class S3 implements StorageableInterface
     /**
      * Attempt to build a bucket (if it doesn't already exist).
      *
-     * @param  string $bucketName
+     * @param string $bucketName
      */
     protected function buildBucket($bucketName)
     {

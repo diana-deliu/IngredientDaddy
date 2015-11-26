@@ -5,12 +5,17 @@ use Codesleeve\Stapler\ORM\StaplerableInterface;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, StaplerableInterface {
-
-	use Authenticatable, CanResetPassword, EloquentTrait;
+class User extends Model implements AuthenticatableContract,
+		AuthorizableContract,
+		CanResetPasswordContract,
+		StaplerableInterface
+{
+	use Authenticatable, Authorizable, CanResetPassword, EloquentTrait;
 
     public function __construct(array $attributes = array()) {
         $this->hasAttachedFile('avatar', [

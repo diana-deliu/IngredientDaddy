@@ -1,7 +1,7 @@
 laravel-stapler
 ===============
-[![Latest Stable Version](https://poser.pugx.org/codesleeve/laravel-stapler/v/stable.svg)](https://packagist.org/packages/codesleeve/laravel-stapler)[![Total Downloads](https://poser.pugx.org/codesleeve/laravel-stapler/downloads.svg)](https://packagist.org/packages/codesleeve/laravel-stapler) 
-[![Latest Unstable Version](https://poser.pugx.org/codesleeve/laravel-stapler/v/unstable.svg)](https://packagist.org/packages/codesleeve/laravel-stapler) 
+[![Latest Stable Version](https://poser.pugx.org/codesleeve/laravel-stapler/v/stable.svg)](https://packagist.org/packages/codesleeve/laravel-stapler)[![Total Downloads](https://poser.pugx.org/codesleeve/laravel-stapler/downloads.svg)](https://packagist.org/packages/codesleeve/laravel-stapler)
+[![Latest Unstable Version](https://poser.pugx.org/codesleeve/laravel-stapler/v/unstable.svg)](https://packagist.org/packages/codesleeve/laravel-stapler)
 [![License](https://poser.pugx.org/codesleeve/laravel-stapler/license.svg)](https://packagist.org/packages/codesleeve/laravel-stapler)
 
 Laravel-Stapler is a Stapler-based file upload package for the Laravel framework.  It provides a full set of Laravel commands, a migration generator, and a cascading package config on top of the [Stapler](https://github.com/CodeSleeve/stapler) package.  It also bootstraps Stapler with very sensible defaults for use with Laravel.  If you are wanting to use [Stapler](https://github.com/CodeSleeve/stapler) with Laravel, it is strongly recommended that you use this package to do so.
@@ -10,11 +10,13 @@ Laravel-Stapler was created by [Travis Bennett](https://twitter.com/tandrewbenne
 
 * [Requirements](#requirements)
 * [Installation](#installation)
+* [Deprecations](#deprecations)
 * [Migrating From Stapler v1.0.0-Beta4](#migrating-from-Stapler-v1.0.0-Beta4)
 * [Quick Start](#quickstart)
 * [Commands](#commands)
   * [Fasten](#fasten)
   * [Refresh](#refresh)
+* [Troubleshooting](#troubleshooting)
 * [Contributing](#contributing)
 
 ## Requirements
@@ -32,17 +34,22 @@ Install the package using Composer.  Edit your project's `composer.json` file to
   }
 ```
 
-Once this operation completes, the final step is to add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
+Once this operation completes, the final step is to add the service provider.
 
+For Laravel 4, Open `app/config/app.php`, and add a new item to the providers array:
 ```php
-    'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider'
+    'Codesleeve\LaravelStapler\Providers\L4ServiceProvider'
 ```
 
-Configuration files can be published and edited by running:
+For Laravel 5, Open `config/app.php`, and add a new item to the providers array:
+```php
+    'Codesleeve\LaravelStapler\Providers\L5ServiceProvider'
+```
 
-```
-php artisan config:publish codesleeve/laravel-stapler
-```
+## Deprecations
+As of 1.0.04, the 'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider' service provider has been deprecated
+(this provider will be removed in the next major release).  Instead, you should now be using the corresponding service provider for the specific version
+of Laravel that you're using.
 
 ## migrating-from-Stapler-v1.0.0-Beta4
 If you've been using Stapler (prior to v1.0.0-Beta4) in your Laravel app, you now need to be using this package instead.  Uninstall Stapler (remove it from your composer.json, remove the service provider, etc) and install this package following the instructions above.  Once installed, the following changes may need need to be made in your application:
@@ -55,13 +62,13 @@ If you've been using Stapler (prior to v1.0.0-Beta4) in your Laravel app, you no
 
 * In your s3 configuration, instead of passing 'key', 'secret', 'region', and 'scheme' options, you'll now need to pass a single 's3_client_config' array containing these options (and any others you might want).  These will be passed directly to the s3ClientFactory when creating an S3 client.  Passing the params as an array now allows you to configure your s3 client (for a given model/attachment) however you like.  See:  http://docs.aws.amazon.com/aws-sdk-php/guide/latest/configuration.html#client-configuration-options
 
-* In your s3 configuration, instead of passing 'bucket' and 'ACL', you'll now need to pass a single 's3_object_config' array containing these values (this is used by the S3Client::putObject() method).  See:  http://docs.aws.amazon.com/aws-sdk-php/latest/class-Aws.S3.S3Client.html#_putObject
+* In your s3 configuration, instead of passing 'Bucket' and 'ACL', you'll now need to pass a single 's3_object_config' array containing these values (this is used by the S3Client::putObject() method).  See:  http://docs.aws.amazon.com/aws-sdk-php/latest/class-Aws.S3.S3Client.html#_putObject
 
 * The ':laravel_root' interpolation has been changed to ':app_root'
 
 ## Quickstart
-In the document root of your application (most likely the public folder), create a folder named system and 
-grant your application write permissions to it.  For this, we're assuming the existence of an existing `User` model in which we're going to add an avatar image to. 
+In the document root of your application (most likely the public folder), create a folder named system and
+grant your application write permissions to it.  For this, we're assuming the existence of an existing `User` model in which we're going to add an avatar image to.
 
 In your model:
 
@@ -71,7 +78,7 @@ use Codesleeve\Stapler\ORM\EloquentTrait;
 
 class User extends Eloquent implements StaplerableInterface {
 	use EloquentTrait;
-	
+
 	// Add the 'avatar' attachment to the fillable array so that it's mass-assignable on this model.
 	protected $fillable = ['avatar', 'first_name', 'last_name'];
 
@@ -103,7 +110,7 @@ In your new view:
 	<?= Form::input('first_name') ?>
 	<?= Form::input('last_name') ?>
 	<?= Form::file('avatar') ?>
-    <?= Form::submit('save') ?>   
+    <?= Form::submit('save') ?>
 <?= Form::close() ?>
 ```
 
@@ -112,7 +119,7 @@ In your controller:
 public function store()
 {
 	// Create and save a new user, mass assigning all of the input fields (including the 'avatar' file field).
-    $user = User::create(Input::all());	
+    $user = User::create(Input::all());
 }
 ```
 
@@ -157,6 +164,10 @@ Reprocess only the photo attachment on the ProfilePicture model:
 
 Reprocess a list of attachments on the ProfilePicture model:
 `php artisan stapler:refresh TestPhoto --attachments="foo, bar, baz, etc"`
+
+## Troubleshooting
+Before you submit an issue or create a pull request, please take a look at the [Troubleshooting Section](https://github.com/CodeSleeve/stapler/blob/master/docs/troubleshooting.md) section of the Stapler package.
+There's a very good chance that many (if not all) of the issues you're having with this package are related to the base stapler package and have already been addressed there.
 
 ## Contributing
 This package is always open to contributions:

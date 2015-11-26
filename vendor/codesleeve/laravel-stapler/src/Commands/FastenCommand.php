@@ -1,10 +1,11 @@
-<?php namespace Codesleeve\LaravelStapler\Commands;
+<?php
+
+namespace Codesleeve\LaravelStapler\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Illuminate\View\Factory as View;
 use Illuminate\Filesystem\Filesystem as File;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 class FastenCommand extends Command
@@ -38,22 +39,30 @@ class FastenCommand extends Command
     protected $file;
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
+     * The path to the application's migrations folder.
+     * 
+     * @var File
      */
-    public function __construct(View $view, File $file)
+    protected $migrationsFolderPath;
+
+    /**
+     * Create a new command instance.
+     * 
+     * @param View   $view
+     * @param File   $file
+     * @param string $migrationsFolderPath
+     */
+    public function __construct(View $view, File $file, $migrationsFolderPath)
     {
         parent::__construct();
 
         $this->view = $view;
         $this->file = $file;
+        $this->migrationsFolderPath = $migrationsFolderPath;
     }
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function fire()
     {
@@ -70,6 +79,7 @@ class FastenCommand extends Command
         return [
             ['table', InputArgument::REQUIRED, 'The name of the database table the file fields will be added to.'],
             ['attachment', InputArgument::REQUIRED, 'The name of the corresponding stapler attachment.'],
+            ['after', InputArgument::OPTIONAL, 'Name of a database field after which the file fields will get added.'],
         ];
     }
 
@@ -85,27 +95,20 @@ class FastenCommand extends Command
 
     /**
      * Create a new migration.
-     *
-     * @return void
      */
     protected function createMigration()
     {
-        $data = ['table' => $this->argument('table'), 'attachment' => $this->argument('attachment')];
+        $data = ['table' => $this->argument('table'), 'attachment' => $this->argument('attachment'), 'after' => $this->argument('after')];
         $prefix = date('Y_m_d_His');
-        $path = app_path() . '/database/migrations';
 
-        if (!is_dir($path)) mkdir($path);
-
-        $fileName  = $path . '/' . $prefix . '_add_' . $data['attachment'] . '_fields_to_' . $data['table'] . '_table.php';
-        $data['className'] = 'Add' . ucfirst(Str::camel($data['attachment'])) . 'FieldsTo' . ucfirst(Str::camel($data['table'])) . 'Table';
+        $fileName = $this->migrationsFolderPath.'/'.$prefix.'_add_'.$data['attachment'].'_fields_to_'.$data['table'].'_table.php';
+        $data['className'] = 'Add'.ucfirst(Str::camel($data['attachment'])).'FieldsTo'.ucfirst(Str::camel($data['table'])).'Table';
 
         // Save the new migration to disk using the stapler migration view.
         $migration = $this->view->make('laravel-stapler::migration', $data)->render();
         $this->file->put($fileName, $migration);
 
         // Dump the autoloader and print a created migration message to the console.
-        $this->call('dump-autoload');
         $this->info("Created migration: $fileName");
     }
-
 }

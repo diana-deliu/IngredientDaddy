@@ -1,4 +1,6 @@
-<?php namespace Codesleeve\LaravelStapler\Commands;
+<?php
+
+namespace Codesleeve\LaravelStapler\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,8 +34,7 @@ class RefreshCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param  ImageRefreshService $imageRefreshService
-     * @return void
+     * @param ImageRefreshService $imageRefreshService
      */
     public function __construct(ImageRefreshService $imageRefreshService)
     {
@@ -44,15 +45,13 @@ class RefreshCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function fire()
     {
         $this->imageRefreshService->setOutput($this->output);
 
         $class = $this->argument('class');
-        $attachments = $this->option('attachments') ?: [];
+        $attachments = $this->option('attachments') ?: '';
 
         $this->info('Refreshing uploaded images...');
         $this->imageRefreshService->refresh($class, $attachments);

@@ -1,4 +1,6 @@
-<?php namespace Codesleeve\LaravelStapler\Services;
+<?php
+
+namespace Codesleeve\LaravelStapler\Services;
 
 use Codesleeve\LaravelStapler\Exceptions\InvalidClassException;
 use Illuminate\Database\Eloquent\Collection;
@@ -11,14 +13,14 @@ class ImageRefreshService
 {
     /**
      * The laravel application instance.
-     * 
+     *
      * @var Application
      */
     protected $app;
 
     /**
      * A Symfony console output instance.
-     * 
+     *
      * @var OutputInterface
      */
     protected $output;
@@ -26,7 +28,8 @@ class ImageRefreshService
     /**
      * @param Application $app
      */
-    public function __construct(Application $app) {
+    public function __construct(Application $app)
+    {
         $this->app = $app;
     }
 
@@ -42,11 +45,11 @@ class ImageRefreshService
      * Attempt to refresh the defined attachments on a particular model.
      *
      * @throws InvalidClassException
-     * @param  string $class
-     * @param  array $attachments
-     * @return void
+     *
+     * @param string $class
+     * @param string $attachments
      */
-    public function refresh($class, array $attachments)
+    public function refresh($class, $attachments)
     {
         if (!method_exists($class, 'hasAttachedFile')) {
             throw new InvalidClassException("Invalid class: the $class class is not currently using Stapler.", 1);
@@ -54,35 +57,29 @@ class ImageRefreshService
 
         $models = $this->app->make($class)->all();
 
-        if ($attachments)
-        {
+        if ($attachments) {
             $attachments = explode(',', str_replace(', ', ',', $attachments));
             $this->processSomeAttachments($models, $attachments);
-
-            return;
+        } else {
+            $this->processAllAttachments($models);
         }
-
-        $this->processAllAttachments($models);
     }
 
     /**
      * Process a only a specified subset of stapler attachments.
      *
-     * @param  Collection $models
-     * @param  array $attachments
-     * @return void
+     * @param Collection $models
+     * @param array      $attachments
      */
-    protected  function processSomeAttachments(Collection $models, array $attachments)
+    protected function processSomeAttachments(Collection $models, array $attachments)
     {
         $progress = $this->getProgressBar($models);
         $progress->start();
 
-        foreach ($models as $model)
-        {
+        foreach ($models as $model) {
             $progress->advance();
 
-            foreach ($model->getAttachedFiles() as $attachedFile)
-            {
+            foreach ($model->getAttachedFiles() as $attachedFile) {
                 if (in_array($attachedFile->name, $attachments)) {
                     $attachedFile->reprocess();
                 }
@@ -95,20 +92,17 @@ class ImageRefreshService
     /**
      * Process all stapler attachments defined on a class.
      *
-     * @param  Collection $models
-     * @return void
+     * @param Collection $models
      */
     protected function processAllAttachments(Collection $models)
     {
         $progress = $this->getProgressBar($models);
         $progress->start();
 
-        foreach ($models as $model)
-        {
+        foreach ($models as $model) {
             $progress->advance();
 
-            foreach ($model->getAttachedFiles() as $attachedFile)
-            {
+            foreach ($model->getAttachedFiles() as $attachedFile) {
                 $attachedFile->reprocess();
             }
         }
@@ -117,7 +111,7 @@ class ImageRefreshService
     }
 
     /**
-     * Get an instance of the ProgressBar helper
+     * Get an instance of the ProgressBar helper.
      *
      * @param Collection $models
      *
@@ -125,7 +119,7 @@ class ImageRefreshService
      */
     protected function getProgressBar(Collection $models)
     {
-        $output   = $this->output ?: new NullOutput();
+        $output = $this->output ?: new NullOutput();
         $progress = new ProgressBar($output, $models->count());
 
         return $progress;

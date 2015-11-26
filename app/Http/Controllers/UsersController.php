@@ -32,7 +32,7 @@ class UsersController extends Controller
         $country = $user->region->country;
         $city = $user->region->city;
 
-        $countries = Country::lists('country_name', 'country_code');
+        $countries = Country::lists('country_name', 'country_code')->all();
         $countries = ['' => 'Country'] + $countries;
 
         return view('pages.profile', compact('user', 'country', 'city', 'countries'));
